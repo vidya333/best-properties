@@ -1,0 +1,123 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Footer = () => {
+  return (
+    <footer className="bg-[#080808]" id="contact">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-white/10">
+
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-9 h-9 bg-[#B8975A] flex items-center justify-center">
+                <span className="text-white font-serif font-bold text-xl">B</span>
+              </div>
+              <span className="text-white font-semibold tracking-widest text-sm uppercase">
+                BEST <span className="text-[#B8975A]">Properties</span>
+              </span>
+            </div>
+            <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-xs">
+              Premium real estate services in Nanded City & Pune. Finding you the best home since 2012.
+            </p>
+            <div className="flex gap-4">
+              {[
+                { icon: 'bi-facebook', href: 'https://facebook.com' },
+                { icon: 'bi-instagram', href: 'https://instagram.com' },
+                { icon: 'bi-linkedin', href: 'https://linkedin.com' },
+                { icon: 'bi-whatsapp', href: 'https://wa.me/919999999999' },
+              ].map(({ icon, href }) => (
+                <a
+                  key={icon}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/40 hover:border-[#B8975A] hover:text-[#B8975A] transition-all duration-300"
+                >
+                  <i className={`bi ${icon} text-sm`}></i>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h5 className="text-[11px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-5 font-sans">
+              Quick Links
+            </h5>
+            <div className="flex flex-col gap-3">
+              {[
+                { to: '/', label: 'Home' },
+                { to: '/about-us', label: 'About Us' },
+                { to: '/gallery', label: 'Gallery' },
+                { to: '/loan', label: 'Loan Services' },
+              ].map(({ to, label }) => (
+                <Link
+                  key={to}
+                  to={to}
+                  className="text-white/40 text-sm hover:text-white transition-colors duration-200"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Property Types */}
+          <div>
+            <h5 className="text-[11px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-5 font-sans">
+              Properties
+            </h5>
+            <div className="flex flex-col gap-3">
+              {[
+                ['residential-apartment', 'Apartments'],
+                ['IndependentHouse/Villa', 'Villas'],
+                ['commercial', 'Commercial'],
+                ['plot', 'Plots'],
+              ].map(([slug, label]) => (
+                <Link
+                  key={slug}
+                  to={`/properties/type/${slug}`}
+                  className="text-white/40 text-sm hover:text-white transition-colors duration-200"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h5 className="text-[11px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-5 font-sans">
+              Contact
+            </h5>
+            <div className="flex flex-col gap-3 text-white/40 text-sm">
+              <p className="leading-relaxed">
+                S-4, Second Floor, Destination Centre-1,<br />
+                Nanded City, Sinhagad Road,<br />
+                Pune – 411041
+              </p>
+              <a href="tel:+919112456000" className="hover:text-white transition-colors">
+                +91 99999 99999
+              </a>
+              <a href="mailto:vidya.nk07@gmail.com" className="hover:text-white transition-colors">
+                vidya.nk07@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
+          <p className="text-white/20 text-xs">
+            © {new Date().getFullYear()} BEST Properties. All rights reserved.
+          </p>
+          <p className="text-white/20 text-xs">
+            Designed & Developed by Vidya Tandel
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

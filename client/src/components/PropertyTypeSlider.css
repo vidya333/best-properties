@@ -1,0 +1,101 @@
+.property-slider-wrapper {
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+}
+
+.property-slider-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.property-type-slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.property-type-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.property-type-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.property-type-card {
+  width: 300px;
+  height: 400px;
+  background-color: rgb(255, 243, 243);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+   position: relative;
+}
+
+.property-type-card:hover {
+  transform: translateY(-3px);
+}
+
+.property-type-card img {
+  width: 100%;
+  border-radius: 8px;
+  height: 400px;
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.property-type-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 3rem;
+  z-index: 2;
+}
+
+.property-type-info h3 { 
+  color: #222;
+}
+
+.property-type-info p {
+  color: #666;
+}
+
+.property-type-scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 0px 15px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.property-type-scroll-btn.left {
+  left: -10px;
+}
+
+.property-type-scroll-btn.right {
+  right: -10px;
+}
+
+/* @media (max-width: 768px) {
+  .property-type-scroll-btn {
+    display: none;
+  }
+} */
