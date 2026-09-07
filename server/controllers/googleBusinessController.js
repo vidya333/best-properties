@@ -1,39 +1,26 @@
-const express = require('express');
-const cors = require('cors');
 const axios = require('axios');
-require('dotenv').config();
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// Google Business Data Controller logic
 const getGoogleBusinessData = async (req, res) => {
   try {
     const placeId = process.env.GOOGLE_PLACE_ID;
     const apiKey = process.env.GOOGLE_PLACES_API_KEY;
 
     if (!placeId || !apiKey) {
-      return res.status(500).json({ 
-        success: false, 
-        error: 'Google Place ID or API Key is missing from environment variables.' 
-      });
+      return res.status(500).json({ error: 'Google Place ID or API Key not configured on server.' });
     }
 
+    // Fetching place details including reviews, rating, hours, photos, user ratings total
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,user_ratings_total,reviews,opening_hours,photos,formatted_address,formatted_phone_number,website&key=${apiKey}`;
 
     const response = await axios.get(url);
     const placeData = response.data.result;
 
     if (!placeData) {
-      return res.status(404).json({ success: false, error: 'Business place data not found on Google Maps.' });
+      return res.status(404).json({ error: 'Business place data not found.' });
     }
 
-    // Format Google photo references into usable public image URLs
-    const photos = placeData.photos ? placeData.photos.slice(0, 4).map(photo => {
+    // Format photo references into actual image URLs if needed
+    const photos = placeData.photos ? placeData.photos.slice(0, 5).map(photo => {
       return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photo.photo_reference}&key=${apiKey}`;
     }) : [];
 
@@ -52,15 +39,9 @@ const getGoogleBusinessData = async (req, res) => {
 
     res.status(200).json({ success: true, data: payload });
   } catch (error) {
-    console.error('Error contacting Google Places API:', error.message);
-    res.status(500).json({ success: false, error: 'Failed to fetch live data from Google' });
+    console.error('Error fetching Google Business data:', error.message);
+    res.status(500).json({ success: false, error: 'Failed to fetch business data' });
   }
 };
 
-// Register Route
-app.get('/api/business/live-data', getGoogleBusinessData);
-
-// Start Server
-app.listen(PORT, () => {
-  console.log(`Backend server running smoothly on http://localhost:${PORT}`);
-});
+module.exports = { getGoogleBusinessData };

@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import LocationSection from '../components/LocationSection';
 import NewProjectsSection from '../components/NewProjectsSection';
 import ActionStrip from '../components/ActionStrip';
+import GoogleBusinessLive from '../components/GoogleBusinessLive';
+import FloatingActions from '../components/FloatingActions';
 
 // Fallback Mock Properties matching public/images folder
 const FALLBACK_PROPERTIES = [
@@ -159,6 +161,8 @@ const Home = () => {
 
       {/* Action strip */}
       <ActionStrip/>
+
+     
 
      {/* About Section - Split Layout */}
     <section className="bg-[#FAF9F5] py-20 px-6 overflow-hidden">
@@ -405,6 +409,12 @@ const Home = () => {
 
       {/* Partners */}
       <BusinessPartners />
+
+      {/* Google Reviews + Ratings */}
+      <GoogleBusinessLive/>
+
+      {/* Floating Call + Whatsapp Button */}
+      <FloatingActions/>
     </div>
   );
 };
