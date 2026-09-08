@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import { useNavigate } from 'react-router-dom';
 import PropertyTable from './PropertyTable';
 import AddProject from './AddProject';
 import ProjectsTable from './ProjectsTable';
@@ -8,7 +7,6 @@ import api from "../api";
 import GalleryUpload from './GalleryUpload';
 
 const AddProperty = () => {
-  const navigate = useNavigate();
   const formRef = useRef(null); // Reference for smooth scrolling
 
   const [formData, setFormData] = useState({
@@ -77,7 +75,6 @@ const AddProperty = () => {
         alert(editId ? "Property updated successfully!" : "Property added successfully!");
         setEditId(null);
         resetForm();
-        if (!editId) navigate('/'); // Navigate only on new Add
       }
     } catch (err) {
       console.error("Submission error:", err);
@@ -281,8 +278,11 @@ const AddProperty = () => {
                 <option value="2BHK">2 BHK</option>
                 <option value="2.5BHK">2.5 BHK</option>
                 <option value="3BHK">3 BHK</option>
+                <option value="3BHK">3.5 BHK</option>
                 <option value="4BHK">4 BHK</option>
+                <option value="4BHK">4.5 BHK</option>
                 <option value="5BHK">5 BHK</option>
+                <option value="5BHK">5.5 BHK</option>
               </select>
             </div>
 

@@ -14,14 +14,8 @@ export default function GoogleBusinessLive() {
 
   return (
     <div 
+      className="fixed bottom-6 right-6 z-50 h-[74px] w-auto sm:w-auto overflow-hidden rounded-xl shadow-2xl max-sm:w-[74px]"
       style={{
-        position: 'fixed',
-        bottom: '24px',
-        right: '24px',
-        zIndex: 50,
-        height: '74px', 
-        overflow: 'hidden',
-        borderRadius: '12px',
         boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2)'
       }}
     >

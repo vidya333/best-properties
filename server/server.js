@@ -1,7 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
 require('dotenv').config();
+
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+const propertyRoutes = require('./routes/propertyRoutes');
+const projectRoutes = require('./routes/projectRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,57 +14,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Google Business Data Controller logic
-const getGoogleBusinessData = async (req, res) => {
-  try {
-    const placeId = process.env.GOOGLE_PLACE_ID;
-    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/properties', propertyRoutes);
+app.use('/api/projects', projectRoutes);
 
-    if (!placeId || !apiKey) {
-      return res.status(500).json({ 
-        success: false, 
-        error: 'Google Place ID or API Key is missing from environment variables.' 
-      });
-    }
-
-    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,user_ratings_total,reviews,opening_hours,photos,formatted_address,formatted_phone_number,website&key=${apiKey}`;
-
-    const response = await axios.get(url);
-    const placeData = response.data.result;
-
-    if (!placeData) {
-      return res.status(404).json({ success: false, error: 'Business place data not found on Google Maps.' });
-    }
-
-    // Format Google photo references into usable public image URLs
-    const photos = placeData.photos ? placeData.photos.slice(0, 4).map(photo => {
-      return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photo.photo_reference}&key=${apiKey}`;
-    }) : [];
-
-    const payload = {
-      name: placeData.name,
-      address: placeData.formatted_address,
-      phone: placeData.formatted_phone_number,
-      website: placeData.website,
-      rating: placeData.rating || 0,
-      totalReviews: placeData.user_ratings_total || 0,
-      openingHours: placeData.opening_hours ? placeData.opening_hours.weekday_text : [],
-      isOpenNow: placeData.opening_hours ? placeData.opening_hours.open_now : null,
-      reviews: placeData.reviews || [],
-      photos: photos,
-    };
-
-    res.status(200).json({ success: true, data: payload });
-  } catch (error) {
-    console.error('Error contacting Google Places API:', error.message);
-    res.status(500).json({ success: false, error: 'Failed to fetch live data from Google' });
-  }
-};
-
-// Register Route
-app.get('/api/business/live-data', getGoogleBusinessData);
-
-// Start Server
-app.listen(PORT, () => {
-  console.log(`Backend server running smoothly on http://localhost:${PORT}`);
+// Connect to Database and start server
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Backend server running smoothly on http://localhost:${PORT}`);
+  });
 });

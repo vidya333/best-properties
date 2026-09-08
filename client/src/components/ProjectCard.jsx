@@ -204,41 +204,69 @@ function ProjectSlide({ project, onBrochureClick }) {
   const rawImages = Array.isArray(project.images) && project.images.length > 0 ? project.images : ["/images/builder1.jpg"];
   const projectImages = rawImages.map(img => getFullUrl(img));
 
-  const prevImage = () => {
+  const prevImage = (e) => {
+    e.stopPropagation();
     setCurrentIndex((prev) => (prev === 0 ? projectImages.length - 1 : prev - 1));
   };
 
-  const nextImage = () => {
+  const nextImage = (e) => {
+    e.stopPropagation();
     setCurrentIndex((prev) => (prev === projectImages.length - 1 ? 0 : prev + 1));
   };
 
   return (
     <div className="project-card d-flex flex-column flex-lg-row align-items-center">
-      {/* Increased image container size and added fixed aspect ratio */}
+      {/* Image Container with clean modern next/prev arrows and dot indicators */}
       <div 
-        className="image-container position-relative w-100 flex-shrink-0 mb-4 mb-lg-0" 
+        className="image-container position-relative w-100 flex-shrink-0 mb-4 mb-lg-0 overflow-hidden rounded shadow-sm" 
         style={{ maxWidth: "520px", height: "380px" }}
       >
         <img
           src={projectImages[currentIndex]}
           alt={project.title}
-          className="w-100 h-100 object-fit-cover rounded shadow-sm"
+          className="w-100 h-100 object-fit-cover"
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = "/images/builder1.jpg";
           }}
         />
+
         {projectImages.length > 1 && (
           <>
-            <button className="nav-btn left" onClick={prevImage}>❮</button>
-            <button className="nav-btn right" onClick={nextImage}>❯</button>
+            {/* Left Button */}
+            <button 
+              onClick={prevImage}
+              className="position-absolute top-50 start-0 translate-middle-y ms-2 border-0 rounded-circle d-flex align-items-center justify-content-center shadow"
+              style={{ width: "38px", height: "38px", background: "rgba(255, 255, 255, 0.85)", color: "#212529", zIndex: 5, transition: "all 0.2s ease" }}
+              title="Previous Image"
+            >
+              <i className="bi bi-chevron-left"></i>
+            </button>
 
-            <div className="dots">
+            {/* Right Button */}
+            <button 
+              onClick={nextImage}
+              className="position-absolute top-50 end-0 translate-middle-y me-2 border-0 rounded-circle d-flex align-items-center justify-content-center shadow"
+              style={{ width: "38px", height: "38px", background: "rgba(255, 255, 255, 0.85)", color: "#212529", zIndex: 5, transition: "all 0.2s ease" }}
+              title="Next Image"
+            >
+              <i className="bi bi-chevron-right"></i>
+            </button>
+
+            {/* Pagination Dots at Bottom */}
+            <div className="position-absolute bottom-0 start-50 translate-middle-x mb-3 d-flex gap-1 p-1 rounded-pill" style={{ background: "rgba(0,0,0,0.3)", backdropFilter: "blur(4px)", zIndex: 5 }}>
               {projectImages.map((_, index) => (
                 <span
                   key={index}
-                  className={index === currentIndex ? "dot active" : "dot"}
                   onClick={() => setCurrentIndex(index)}
+                  style={{
+                    width: index === currentIndex ? "20px" : "8px",
+                    height: "8px",
+                    borderRadius: "4px",
+                    backgroundColor: index === currentIndex ? "#fff" : "rgba(255,255,255,0.5)",
+                    cursor: "pointer",
+                    transition: "all 0.3s ease"
+                  }}
                 ></span>
               ))}
             </div>

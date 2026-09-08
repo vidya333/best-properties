@@ -7,7 +7,6 @@ import "swiper/css";
 import { API } from '../config';
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import './PropertyDetailPage.css';
 import PropertyCard from '../components/PropertyCard';
 import { FaWhatsapp, FaEnvelope, FaPhoneAlt, FaCalendarCheck, FaMapMarkerAlt } from 'react-icons/fa';
 
@@ -140,32 +139,32 @@ const PropertyDetailPage = () => {
   return (
     <div className="w-full bg-[#FAF9F6] min-h-screen p-0 m-0 overflow-x-hidden">
       
-      {/* Fixed top padding clears navbar clearance cleanly */}
-<section className="relative w-full bg-[#0D0D0D] pt-24 pb-1 px-4 sm:px-8 text-white border-b border-white/10">
-  <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-    <div>
-      <div className="inline-block px-2.5 py-0.5 rounded-full border border-[#B8975A]/40 bg-[#B8975A]/10 text-[9px] font-semibold tracking-[1.5px] uppercase text-[#B8975A] mb-1.5">
-        {property.type || "Exclusive Residence"}
-      </div>
-      <h1 className="font-serif text-xl sm:text-2xl font-bold text-white leading-snug">
-        {property.title}
-      </h1>
-      <p className="text-gray-400 text-xs mt-1 flex items-center gap-1">
-        <FaMapMarkerAlt className="text-[#B8975A] text-xs shrink-0" />
-        Located in {property.location}
-      </p>
-    </div>
+    {/*  Fixed top padding clears navbar clearance cleanly */}
+    <section className="relative w-full bg-[#0D0D0D] pt-24 pb-1 px-4 sm:px-8 text-white border-b border-white/10">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div>
+          <div className="inline-block px-2.5 py-0.5 rounded-full border border-[#B8975A]/40 bg-[#B8975A]/10 text-[9px] font-semibold tracking-[1.5px] uppercase text-[#B8975A] mb-1.5">
+            {property.type || "Exclusive Residence"}
+          </div>
+          <h1 className="font-serif text-xl sm:text-2xl font-bold text-white leading-snug">
+            {property.title}
+          </h1>
+          <p className="text-gray-400 text-xs mt-1 flex items-center gap-1">
+            <FaMapMarkerAlt className="text-[#B8975A] text-xs shrink-0" />
+            Located in {property.location}
+          </p>
+        </div>
 
-    <div className="bg-white/5 border border-white/10 rounded-lg px-3.5 py-1.5 text-right shrink-0">
-      <span className="text-[9px] text-gray-400 block uppercase tracking-wider font-semibold">
-        Guide Price
-      </span>
-      <span className="text-lg sm:text-xl font-bold text-[#B8975A]">
-        ₹{formatPrice(property.price)}
-      </span>
-    </div>
-  </div>
-</section>
+        <div className="bg-white/5 border border-white/10 rounded-lg px-3.5 py-1.5 text-right shrink-0">
+          <span className="text-[9px] text-gray-400 block uppercase tracking-wider font-semibold">
+            Guide Price
+          </span>
+          <span className="text-lg sm:text-xl font-bold text-[#B8975A]">
+            ₹{formatPrice(property.price)}
+          </span>
+        </div>
+      </div>
+    </section>
 
       {/* 2. Main Content Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8">
@@ -209,14 +208,24 @@ const PropertyDetailPage = () => {
             </div>
 
             {/* Map Frame */}
-            <div className="rounded-xl overflow-hidden border border-gray-200 h-48 w-full">
+            <div className="rounded-xl overflow-hidden border border-gray-200 h-48 w-full relative">
               <iframe
                 title="view on map"
                 className="w-full h-full border-0"
-                src={property.locationPin || FALLBACK_PROPERTY.locationPin}
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(property.title + ' ' + property.location)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
                 allowFullScreen
                 loading="lazy"
               />
+              
+              {/* Optional overlay button to open the original short link in a new tab */}
+              <a
+                href={property.locationPin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-2 right-2 bg-black/70 hover:bg-black text-white text-xs px-2.5 py-1.5 rounded-md shadow transition"
+              >
+                Open in Google Maps <i className="bi bi-box-arrow-up-right ml-1"></i>
+              </a>
             </div>
 
             {/* Premium Refined Action Buttons */}

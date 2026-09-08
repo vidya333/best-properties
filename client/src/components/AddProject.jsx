@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
 import api from "../api"; 
 
 const AddProject = ({ editId, initialData, setEditId }) => {
-  const navigate = useNavigate();
   const formRef = useRef(null);
 
   const [formData, setFormData] = useState({
@@ -30,7 +28,7 @@ const AddProject = ({ editId, initialData, setEditId }) => {
         features: initialData.features
           ? initialData.features.join(", ")
           : "",
-        images: [], // Keep empty to allow new uploads
+        images: [], 
         brochure: null,
         whatsappNumber: initialData.whatsappNumber || "",
         email: initialData.email || "",
@@ -110,9 +108,9 @@ const AddProject = ({ editId, initialData, setEditId }) => {
           email: "",
         });
 
-        if (!editId) {
-          navigate("/"); 
-        }      
+        // if (!editId) {
+        //   navigate("/"); 
+        // }      
       } 
     } catch (err) {
       console.error("Project submission error:", err);

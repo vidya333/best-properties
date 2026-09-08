@@ -10,10 +10,18 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: {
-    folder: 'vmprosperitygroup', // folder name in your Cloudinary account
-    resource_type: 'auto',  
-    allowed_formats: ['jpg', 'jpeg', 'png', 'webp','mp4','pdf'],
+  params: async (req, file) => {
+    // If it's a PDF or document, treat it as 'raw', otherwise let 'auto' handle images/videos
+    let resourceType = 'auto';
+    if (file.mimetype === 'application/pdf' || file.mimetype.includes('document')) {
+      resourceType = 'raw';
+    }
+
+    return {
+      folder: 'best-properties', 
+      resource_type: resourceType,  
+      allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'mp4', 'pdf', 'doc', 'docx'],
+    };
   },
 });
 
