@@ -161,93 +161,93 @@ const Home = () => {
       {/* Action strip */}
       <ActionStrip/>
 
-      {/* About Section - Split Layout */}
-      <section className="bg-[#FAF9F5] py-20 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            
-            {/* Left Column: Content & Features */}
-            <div className="space-y-6">
-              <div>
-                <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] mb-3">
-                  About BEST Properties
+     {/* About Section - Split Layout */}
+    <section className="bg-[#FAF9F5] py-20 px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Content & Features */}
+          <div className="space-y-6">
+            <div>
+              <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] mb-3">
+                About BEST Properties
+              </div>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0D0D0D] leading-tight">
+                Nanded City's Most Trusted <br className="hidden sm:inline" />
+                <span className="text-[#B8975A]">Property Experts</span>
+              </h2>
+            </div>
+
+            <p className="text-[#6B6B6B] text-base leading-relaxed">
+              BEST Properties is built on a foundation of unyielding trust, absolute transparency, and unrivaled local expertise. With over 12 years deep-rooted in the Nanded City real estate market, we bridge the gap between dream spaces and seamless ownership.
+            </p>
+
+            {/* Highlight Feature Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="bg-white p-4 border border-gray-100 shadow-sm rounded-sm">
+                <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center mb-2">
+                  <i className="bi bi-shield-check text-base"></i>
                 </div>
-                <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0D0D0D] leading-tight">
-                  Nanded City's Most Trusted <br className="hidden sm:inline" />
-                  <span className="text-[#B8975A]">Property Experts</span>
-                </h2>
+                <h4 className="font-semibold text-sm text-[#0D0D0D]">100% Verified Deals</h4>
+                <p className="text-xs text-[#6B6B6B] mt-1">Clear legal checks & transparent title documentation.</p>
               </div>
 
-              <p className="text-[#6B6B6B] text-base leading-relaxed">
-                BEST Properties is built on a foundation of unyielding trust, absolute transparency, and unrivaled local expertise. With over 12 years deep-rooted in the Nanded City real estate market, we bridge the gap between dream spaces and seamless ownership.
-              </p>
-
-              {/* Highlight Feature Cards Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="bg-white p-4 border border-gray-100 shadow-sm rounded-sm">
-                  <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center mb-2">
-                    <i className="bi bi-shield-check text-base"></i>
-                  </div>
-                  <h4 className="font-semibold text-sm text-[#0D0D0D]">100% Verified Deals</h4>
-                  <p className="text-xs text-[#6B6B6B] mt-1">Clear legal checks & transparent title documentation.</p>
+              <div className="bg-white p-4 border border-gray-100 shadow-sm rounded-sm">
+                <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center mb-2">
+                  <i className="bi bi-graph-up-arrow text-base"></i>
                 </div>
-
-                <div className="bg-white p-4 border border-gray-100 shadow-sm rounded-sm">
-                  <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center mb-2">
-                    <i className="bi bi-graph-up-arrow text-base"></i>
-                  </div>
-                  <h4 className="font-semibold text-sm text-[#0D0D0D]">Market Valuation</h4>
-                  <p className="text-xs text-[#6B6B6B] mt-1">Accurate, data-driven pricing for buying & selling.</p>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <button
-                  onClick={() => navigate('/about-us')}
-                  className="btn-gold px-8 py-3.5 text-xs tracking-wider uppercase font-semibold inline-flex items-center gap-2"
-                >
-                  Know More About Us
-                  <i className="bi bi-arrow-right"></i>
-                </button>
+                <h4 className="font-semibold text-sm text-[#0D0D0D]">Market Valuation</h4>
+                <p className="text-xs text-[#6B6B6B] mt-1">Accurate, data-driven pricing for buying & selling.</p>
               </div>
             </div>
 
-            {/* Right Column: Visual Showcase & Stats */}
-            <div className="relative">
-              {/* Main Image Banner */}
-              <div className="relative rounded-lg overflow-hidden shadow-2xl">
-                <img
-                  src="/images/builder2.jpg"
-                  alt="Nanded City Real Estate"
-                  className="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-700"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/images/builder1.jpg';
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              </div>
-
-              {/* Floating Stat Card 1 - Experience Badge */}
-              <div className="absolute -top-6 -left-4 sm:-left-6 bg-white p-5 shadow-xl border-l-4 border-[#B8975A] rounded-sm max-w-[180px]">
-                <div className="text-3xl font-serif font-bold text-[#0D0D0D]">12+</div>
-                <p className="text-[11px] font-medium text-[#6B6B6B] uppercase tracking-wider mt-0.5">
-                  Years Market Leadership
-                </p>
-              </div>
-
-              {/* Floating Stat Card 2 - Clients Served */}
-              <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-[#1A1A1A] text-white p-5 shadow-2xl rounded-sm max-w-[200px]">
-                <div className="text-3xl font-serif font-bold text-[#B8975A]">500+</div>
-                <p className="text-[11px] font-medium text-gray-300 uppercase tracking-wider mt-0.5">
-                  Happy Families & Investors
-                </p>
-              </div>
+            <div className="pt-2">
+              <button
+                onClick={() => navigate('/about-us')}
+                className="btn-gold px-8 py-3.5 text-xs tracking-wider uppercase font-semibold inline-flex items-center gap-2"
+              >
+                Know More About Us
+                <i className="bi bi-arrow-right"></i>
+              </button>
             </div>
-
           </div>
+
+          {/* Right Column: Visual Showcase & Stats */}
+          <div className="relative">
+            {/* Main Image Banner */}
+            <div className="relative rounded-lg overflow-hidden shadow-2xl">
+              <img
+                src="/images/builder2.jpg"
+                alt="Nanded City Real Estate"
+                className="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-700"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/images/builder1.jpg';
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            </div>
+
+            {/* Floating Stat Card 1 - Experience Badge */}
+            <div className="absolute -top-6 -left-4 sm:-left-6 bg-white p-5 shadow-xl border-l-4 border-[#B8975A] rounded-sm max-w-[180px]">
+              <div className="text-3xl font-serif font-bold text-[#0D0D0D]">12+</div>
+              <p className="text-[11px] font-medium text-[#6B6B6B] uppercase tracking-wider mt-0.5">
+                Years Market Leadership
+              </p>
+            </div>
+
+            {/* Floating Stat Card 2 - Clients Served */}
+            <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-[#1A1A1A] text-white p-5 shadow-2xl rounded-sm max-w-[200px]">
+              <div className="text-3xl font-serif font-bold text-[#B8975A]">500+</div>
+              <p className="text-[11px] font-medium text-gray-300 uppercase tracking-wider mt-0.5">
+                Happy Families & Investors
+              </p>
+            </div>
+          </div>
+
         </div>
-      </section>
+      </div>
+    </section>
 
 
       {/* Properties listing */}

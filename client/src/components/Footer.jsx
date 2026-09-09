@@ -97,23 +97,37 @@ const Footer = () => {
                 Nanded City, Sinhagad Road,<br />
                 Pune – 411041
               </p>
-              <a href="tel:+919112456000" className="hover:text-white transition-colors">
+              <a href="tel:+919112456000" className="text-white/40 hover:text-white transition-colors">
                 +91 99999 99999
               </a>
-              <a href="mailto:vidya.nk07@gmail.com" className="hover:text-white transition-colors">
+              <a href="mailto:vidya.nk07@gmail.com" className="text-white/40 hover:text-white transition-colors">
                 vidya.nk07@gmail.com
               </a>
             </div>
           </div>
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
-          <p className="text-white/20 text-xs">
-            © {new Date().getFullYear()} BEST Properties. All rights reserved.
-          </p>
-          <p className="text-white/20 text-xs">
-            Designed & Developed by Vidya Tandel
-          </p>
+        {/* Bottom Bar: Perfectly Aligned */}
+        <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/20">
+          <p>© {new Date().getFullYear()} BEST Properties. All rights reserved.</p>
+          
+          <div className="flex items-center gap-6">
+            <Link 
+              to="/admin" 
+              className="text-white/30 hover:text-[#B8975A] transition-colors duration-200 tracking-wider uppercase text-[10px]"
+            >
+              Admin Portal ↗
+            </Link>
+            
+            <a 
+              href="https://www.vidyasofficial.world/" 
+              target="_blank" 
+              rel="noreferrer"
+              className="text-white/30 hover:text-white transition-colors duration-200"
+            >
+              Designed & Developed by Vidya Tandel
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -4,7 +4,7 @@ export default function FloatingActions() {
   const phoneNumber = '919623935935'; 
 
   return (
-    <div className="fixed bottom-20 mb-7 right-6 z-50 flex flex-col gap-2">
+    <div className="fixed bottom-6 mb-0 right-6 z-50 flex flex-col gap-2">
       {/* WhatsApp Button */}
       <a
         href={`https://wa.me/${phoneNumber}?text=Hi%2C%20I%20am%20interested%20in%20properties%20at%20Nanded%20City.`}

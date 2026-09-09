@@ -14,10 +14,8 @@ export default function GoogleBusinessLive() {
 
   return (
     <div 
-      className="fixed bottom-6 right-6 z-50 h-[74px] w-auto sm:w-auto overflow-hidden rounded-xl shadow-2xl max-sm:w-[74px]"
-      style={{
-        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2)'
-      }}
+      className="fixed bottom-0 left-4 z-40 overflow-hidden rounded-xl 
+       transition-all duration-300 scale-90 origin-bottom-left hover:scale-100"
     >
       <div 
         className="grwidget-embed" 
