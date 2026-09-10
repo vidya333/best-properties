@@ -64,27 +64,27 @@ const OurPromise = () => {
           <div className="border-t border-gray-100 pt-4 flex flex-col gap-2 text-xs text-[#6B6B6B]">
             <div className="flex items-center gap-2">
               <i className="bi bi-geo-alt-fill text-[#B8975A]"></i>
-              <span>S-4, Second Floor, Destination Centre-1, Nanded City, Sinhagad Road, Pune – 411041</span>
+              <span>Shop No. G-97, Destination Centre-1, Opposite to D-Mart, Nanded City Pune - 411041</span>
             </div>
             <div className="flex items-center gap-2">
               <i className="bi bi-telephone-fill text-[#B8975A]"></i>
-              <a href="tel:+919112456000" className="hover:text-[#B8975A] transition-colors">+91 99999 99999</a>
+              <a href="tel:+919623935935" className="hover:text-[#B8975A] transition-colors">+91 96239 35935</a>
               <span className="text-gray-300">/</span>
-              <a href="tel:+919657096000" className="hover:text-[#B8975A] transition-colors">+91 99999 99999</a>
+              <a href="tel:+919623935935" className="hover:text-[#B8975A] transition-colors">+91 96239 35935</a>
             </div>
             <div className="flex items-center gap-2">
               <i className="bi bi-envelope-fill text-[#B8975A]"></i>
-              <a href="mailto:vidya.nk07@gmail.com" className="hover:text-[#B8975A] transition-colors">vidya.nk07@gmail.com</a>
+              <a href="mailto:vidya.nk07@gmail.com" className="hover:text-[#B8975A] transition-colors">info@bestproperties.com</a>
             </div>
           </div>
 
           {/* Social Links */}
           <div className="flex gap-2 mt-4 pt-3 border-t border-gray-100">
             {[
-              { icon: 'bi-facebook', href: 'https://facebook.com' },
-              { icon: 'bi-instagram', href: 'https://instagram.com' },
+              { icon: 'bi-facebook', href: 'https://www.facebook.com/madhukar.mangnale.1?mibextid=wwXIfr&rdid=Hd9j4rG1cY1SjNTh&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1LZ8iBYHtQ%2F%3Fmibextid%3DwwXIfr#' },
+              { icon: 'bi-instagram', href: 'https://www.instagram.com/nanded_city_best_properties' },
               { icon: 'bi-linkedin', href: 'https://linkedin.com' },
-              { icon: 'bi-whatsapp', href: 'https://wa.me/919112456000' },
+              { icon: 'bi-whatsapp', href: 'https://wa.me/919623935935' },
             ].map(({ icon, href }) => (
               <a
                 key={icon}

@@ -17,15 +17,21 @@ const Footer = () => {
                 BEST <span className="text-[#B8975A]">Properties</span>
               </span>
             </div>
-            <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-white/40 text-sm leading-relaxed mb-4 max-w-xs">
               Premium real estate services in Nanded City & Pune. Finding you the best home since 2012.
             </p>
+            
+            {/* RERA Number */}
+            <div className="mb-6 inline-block bg-white/5 border border-white/10 px-3 py-1.5 rounded text-xs text-[#B8975A] font-medium tracking-wide">
+              RERA No: A52100044024
+            </div>
+
             <div className="flex gap-4">
               {[
-                { icon: 'bi-facebook', href: 'https://facebook.com' },
-                { icon: 'bi-instagram', href: 'https://instagram.com' },
+                { icon: 'bi-facebook', href: 'https://www.facebook.com/madhukar.mangnale.1?mibextid=wwXIfr&rdid=Hd9j4rG1cY1SjNTh&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1LZ8iBYHtQ%2F%3Fmibextid%3DwwXIfr#' },
+                { icon: 'bi-instagram', href: 'https://www.instagram.com/nanded_city_best_properties' },
                 { icon: 'bi-linkedin', href: 'https://linkedin.com' },
-                { icon: 'bi-whatsapp', href: 'https://wa.me/919999999999' },
+                { icon: 'bi-whatsapp', href: 'https://wa.me/919623935935' },
               ].map(({ icon, href }) => (
                 <a
                   key={icon}
@@ -50,7 +56,8 @@ const Footer = () => {
                 { to: '/', label: 'Home' },
                 { to: '/about-us', label: 'About Us' },
                 { to: '/gallery', label: 'Gallery' },
-                { to: '/loan', label: 'Loan Services' },
+                { to: '/properties', label: 'All Properties' },
+                { to: '/contact', label: 'Contact' },
               ].map(({ to, label }) => (
                 <Link
                   key={to}
@@ -63,21 +70,21 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Property Types */}
+          {/* Explore / Browse By (Replaced inflexible property types) */}
           <div>
             <h5 className="text-[11px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-5 font-sans">
-              Properties
+              Explore
             </h5>
             <div className="flex flex-col gap-3">
               {[
-                ['residential-apartment', 'Apartments'],
-                ['IndependentHouse/Villa', 'Villas'],
-                ['commercial', 'Commercial'],
-                ['plot', 'Plots'],
-              ].map(([slug, label]) => (
+                { to: '/properties?status=Sale', label: 'Properties for Sale' },
+                { to: '/properties?status=Rent', label: 'Properties for Rent' },
+                { to: '/properties?search=Nanded+City', label: 'Nanded City Listings' },
+                { to: '/properties?search=Pune', label: 'Pune Region' },
+              ].map(({ to, label }) => (
                 <Link
-                  key={slug}
-                  to={`/properties/type/${slug}`}
+                  key={label}
+                  to={to}
                   className="text-white/40 text-sm hover:text-white transition-colors duration-200"
                 >
                   {label}
@@ -93,15 +100,14 @@ const Footer = () => {
             </h5>
             <div className="flex flex-col gap-3 text-white/40 text-sm">
               <p className="leading-relaxed">
-                S-4, Second Floor, Destination Centre-1,<br />
-                Nanded City, Sinhagad Road,<br />
-                Pune – 411041
+                Shop No. G-97, Destination Centre-1, Opposite to D-Mart, <br />
+                Nanded City Pune - 411041
               </p>
-              <a href="tel:+919112456000" className="text-white/40 hover:text-white transition-colors">
-                +91 99999 99999
+              <a href="tel:+919623935935" className="text-white/40 hover:text-white transition-colors">
+                +91 96239 35935
               </a>
               <a href="mailto:vidya.nk07@gmail.com" className="text-white/40 hover:text-white transition-colors">
-                vidya.nk07@gmail.com
+                info@bestproperties.com
               </a>
             </div>
           </div>

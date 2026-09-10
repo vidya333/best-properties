@@ -3,7 +3,14 @@ import EnquiryModal from './EnquiryModal';
 
 const slides = [
   {
-    img: '/images/nandedcity.jpg',
+    img: '/images/ecopark1.jpg',
+    label: 'Welcome To',
+    title: 'BEST Properties &\nDevelopers',
+    sub: 'BEST Properties – Madhukar Mangnale | Real Estate Agent',
+    desc: 'Your trusted partner in Nanded City Pune. Delivering absolute transparency, unyielding trust, and deep-rooted local expertise to bring you your dream spaces.',
+  },
+  {
+    img: '/images/circle.jpg',
     label: 'Residential',
     title: 'Find Your Perfect\nHome in Pune',
     sub: 'Premium apartments & villas in Nanded City',
@@ -17,7 +24,7 @@ const slides = [
     desc: 'Maximize your wealth with handpicked real estate opportunities across high-growth corridors. Benefit from strong capital appreciation, high rental yields, and seamless end-to-end guidance.',
   },
   {
-    img: '/images/ecopark1.jpg',
+    img: '/images/nandedcity.jpg',
     label: 'Commercial',
     title: 'Premium Commercial\nSpaces',
     sub: 'Where business meets opportunity in Pune',
@@ -45,15 +52,16 @@ const Banner = () => {
   const slide = slides[current];
 
   return (
-    <div className="relative h-screen min-h-[750px] overflow-hidden bg-[#0D0D0D]">
+    <div className="relative h-screen min-h-[790px] overflow-hidden mt-2 bg-[#0D0D0D]">
       {/* Background slides */}
       {slides.map((s, i) => (
         <div
           key={i}
-          className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+            i === current ? 'opacity-100' : 'opacity-0'
+          }`}
           style={{
             backgroundImage: `url(${s.img})`,
-            opacity: i === current ? 1 : 0,
           }}
         />
       ))}
@@ -106,7 +114,7 @@ const Banner = () => {
         </div>
 
         {/* Search bar */}
-        <form
+        {/* <form
           onSubmit={handleSearch}
           className="bg-black/40 backdrop-blur-md border border-white/20 flex flex-col sm:flex-row max-w-2xl w-full shadow-2xl"
         >
@@ -123,10 +131,10 @@ const Banner = () => {
           >
             Search
           </button>
-        </form>
+        </form> */}
 
         {/* Slide Indicator Dots */}
-        <div className="flex gap-2 mt-5">
+        <div className="flex gap-2 mt-0">
           {slides.map((_, i) => (
             <button
               key={i}
@@ -145,7 +153,7 @@ const Banner = () => {
           {[
             { num: '43+', label: 'Properties' },
             { num: '1K+', label: 'Happy Clients' },
-            { num: '12+', label: 'Years Experience' },
+            { num: '20+', label: 'Years Experience' },
           ].map(({ num, label }) => (
             <div key={label} className="text-center py-3 sm:py-4">
               <div className="font-serif text-xl sm:text-2xl font-bold text-[#B8975A]">{num}</div>

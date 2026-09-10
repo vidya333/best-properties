@@ -1,12 +1,16 @@
 import React from 'react';
+
 import { 
   FaPhoneAlt, 
   FaEnvelope, 
   FaWhatsapp, 
   FaShieldAlt, 
-  FaChartLine, 
+  FaMapMarkerAlt, 
+  FaInstagram, 
+  FaFacebookF, 
+  FaGlobe,
+  FaChartLine,
 } from 'react-icons/fa';
-import OurPromise from '../components/OurPromise';
 
 const teamMembers = [
   {
@@ -183,7 +187,7 @@ const AboutUsPage = () => {
           {/* Key Metric Counters Banner */}
           <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 bg-[#FAF9F5] p-8 rounded-lg border border-gray-200/80">
             <div className="text-center sm:text-left">
-              <div className="font-serif text-3xl font-bold text-[#0D0D0D]">12+ Years</div>
+              <div className="font-serif text-3xl font-bold text-[#0D0D0D]">20+ Years</div>
               <p className="text-xs text-[#6B6B6B] mt-1 uppercase tracking-wider font-medium">Nanded City Experience</p>
             </div>
             <div className="text-center sm:text-left border-y sm:border-y-0 sm:border-x border-gray-200 py-4 sm:py-0 sm:px-6">
@@ -196,6 +200,186 @@ const AboutUsPage = () => {
             </div>
           </div>
 
+        </div>
+      </section>
+
+       {/* 2. Dedicated Founder Spotlight Section */}
+      <section className="py-20 px-6 bg-[#FAF9F5] overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Left: Founder Portrait Card */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#B8975A]/30 bg-white">
+                <img
+                  src="/images/madhukar-sir.jpeg" 
+                  alt="Madhukar Mangnale - Founder & Principal Lead"
+                  className="w-full h-[480px] object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white text-center">
+                  <h3 className="font-serif text-2xl font-bold">Madhukar Mangnale</h3>
+                  <p className="text-xs text-[#B8975A] font-medium uppercase tracking-widest mt-1">
+                    Founder & Principal Lead
+                  </p>
+                </div>
+              </div>
+
+              {/* Floating Badge */}
+              <div className="absolute -bottom-6 -right-4 bg-[#0D0D0D] text-white px-3 py-1 rounded-lg shadow-xl border border-[#B8975A]/40 hidden sm:block">
+                <div className="text-xl font-serif font-bold text-[#B8975A]">20+ Years</div>
+                <p className="text-[10px] tracking-wider uppercase text-gray-300 font-medium">Local Market Mastery</p>
+              </div>
+            </div>
+
+            {/* Right: Founder's Message, Info & Socials */}
+            <div className="lg:col-span-7 space-y-6">
+              <div>
+                <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] mb-3">
+                  Leadership Note
+                </div>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0D0D0D] leading-tight">
+                  A Personal Commitment to <br />
+                  <span className="text-[#B8975A]">Transparency & Integrity</span>
+                </h2>
+              </div>
+
+              <p className="text-[#4A4A4A] text-base leading-relaxed italic border-l-4 border-[#B8975A] pl-4 bg-white py-3 shadow-sm rounded-r">
+                "Real estate is not just about square feet or transactions; it is about building lifelong security for families and investors. Our goal is to make every property acquisition in Nanded City entirely transparent and stress-free."
+              </p>
+
+              <p className="text-[#6B6B6B] text-sm sm:text-base leading-relaxed">
+                With over a decade of hands-on experience navigating the micro-markets of Nanded City and Sinhagad Road, Madhukar Mangnale has established BEST Properties as a symbol of absolute reliability. He personally oversees critical property evaluations, title verifications, and client negotiations to ensure complete peace of mind.
+              </p>
+
+              {/* Quick Contact & Social Links Bar */}
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <a
+                  href="tel:+919623935935"
+                  className="bg-[#0D0D0D] hover:bg-[#B8975A] text-white px-5 py-2.5 rounded text-xs font-semibold tracking-wider uppercase transition-colors inline-flex items-center gap-2"
+                >
+                  <FaPhoneAlt className="text-xs" /> +91 96239 35935
+                </a>
+                <a
+                  href="https://wa.me/919623935935"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-[#25D366] hover:bg-[#1ebe57] text-white px-5 py-2.5 rounded text-xs font-semibold tracking-wider uppercase transition-colors inline-flex items-center gap-2"
+                >
+                  <FaWhatsapp className="text-sm" /> WhatsApp
+                </a>
+              </div>
+
+              {/* Social Channels Row */}
+              <div className="pt-3 border-t border-gray-200/80 flex items-center gap-3">
+                <span className="text-xs font-semibold text-[#0D0D0D] uppercase tracking-wider mr-1">Connect:</span>
+                
+                <a
+                  href="https://www.instagram.com/nanded_city_best_properties"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-9 h-9 rounded-full bg-white border border-gray-200 text-[#0D0D0D] hover:bg-[#B8975A] hover:text-white hover:border-[#B8975A] flex items-center justify-center transition-colors shadow-sm"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="text-sm" />
+                </a>
+
+                <a
+                  href="https://www.facebook.com/share/1LZ8iBYHtQ/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-9 h-9 rounded-full bg-white border border-gray-200 text-[#0D0D0D] hover:bg-[#B8975A] hover:text-white hover:border-[#B8975A] flex items-center justify-center transition-colors shadow-sm"
+                  aria-label="Facebook"
+                >
+                  <FaFacebookF className="text-sm" />
+                </a>
+
+                <a
+                  href="https://maps.app.goo.gl/vFvbeVZCmtCFwNVLA?g_st=ic"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-9 h-9 rounded-full bg-white border border-gray-200 text-[#0D0D0D] hover:bg-[#B8975A] hover:text-white hover:border-[#B8975A] flex items-center justify-center transition-colors shadow-sm"
+                  aria-label="Google Business Profile"
+                >
+                  <FaGlobe className="text-sm" />
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Office Showcase Section */}
+      <section className="py-20 px-6 bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Left: Office Info */}
+            <div className="space-y-6">
+              <div>
+                <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] mb-3">
+                  Visit Our Office
+                </div>
+                <h2 className="font-serif text-3xl font-bold text-[#0D0D0D] leading-tight">
+                  Drop By For A Cup Of Coffee & Discussion
+                </h2>
+              </div>
+
+              <p className="text-[#6B6B6B] text-sm sm:text-base leading-relaxed">
+                We believe in open doors and face-to-face interactions. Visit our established office location in Nanded City to explore active listings, review legal portfolios, and discuss your property requirements directly with Madhukar Mangnale and our team.
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center shrink-0 mt-1">
+                    <FaMapMarkerAlt />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-sm text-[#0D0D0D]">Office Address</h4>
+                    <p className="text-xs text-[#6B6B6B] mt-0.5">BEST Properties, Shop No. G-97, Destination Centre-1,<br /> Opposite to D-Mart, Nanded City Pune - 411041</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center shrink-0 mt-1">
+                    <FaShieldAlt />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-sm text-[#0D0D0D]">Services Offered</h4>
+                    <p className="text-xs text-[#6B6B6B] mt-0.5">Buy, Sale, Rent & Complete Legal Documentation Support</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href="https://maps.app.goo.gl/vFvbeVZCmtCFwNVLA?g_st=ic"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-bold text-[#B8975A] hover:text-[#0D0D0D] transition-colors"
+                >
+                  <FaMapMarkerAlt /> View Location on Google Maps &rarr;
+                </a>
+              </div>
+            </div>
+
+            {/* Right: Office Storefront Photo */}
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-gray-100">
+                <img
+                  src="/images/office.jpeg" 
+                  alt="BEST Properties Office Storefront"
+                  className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute -bottom-4 -left-4 bg-[#B8975A] text-white px-5 py-3 rounded shadow-lg text-xs font-semibold tracking-wider uppercase">
+                Authorized Channel Partners
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
@@ -310,99 +494,99 @@ const AboutUsPage = () => {
       </section>
 
       {/* 5. Team Members Grid */}
-<section className="py-20 px-6 bg-[#FAF9F5] border-t border-gray-200/60">
-  <div className="max-w-6xl mx-auto">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      {/* Title / Intro Box */}
-      <div className="p-8 flex flex-col justify-center bg-white rounded-2xl border border-gray-100 shadow-sm">
-        <div className="text-[11px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-2">
-          Expert Advisors
-        </div>
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0D0D0D] mb-4">
-          Our Property Specialists
-        </h2>
-        <p className="text-[#6B6B6B] text-xs sm:text-sm leading-relaxed mb-6">
-          Meet the experienced professionals driving transparency, market analysis, and client success across Nanded City.
-        </p>
-        <div>
-          <a
-            href="#contact"
-            className="inline-block bg-[#B8975A] hover:bg-[#9A7A42] text-white px-6 py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase transition-colors"
-          >
-            Get In Touch
-          </a>
-        </div>
-      </div>
-
-      {/* Team Member Photo Cards (Always Visible Info) */}
-      {teamMembers.map((member) => (
-        <div
-          key={member.name}
-          className="group relative h-[360px] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-gray-900 cursor-pointer"
-        >
-          {/* Base Member Photo */}
-          <img
-            src={member.image}
-            alt={member.name}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-
-          {/* Bottom Gradient Protection */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-
-          {/* Main Info Card Overlay (Always Visible) */}
-          <div className="absolute inset-0 flex flex-col justify-end p-6 z-10 text-center items-center">
+      <section className="py-20 px-6 bg-[#FAF9F5] border-t border-gray-200/60">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {/* Name & Role */}
-            <h3 className="font-serif text-xl font-bold text-white mb-1 drop-shadow-sm">
-              {member.name}
-            </h3>
-            <p className="text-xs text-[#B8975A] font-medium tracking-wide mb-3">
-              {member.role}
-            </p>
-
-            {/* Accent Line */}
-            <div className="w-10 h-[2px] bg-[#B8975A]/60 mb-4" />
-
-            {/* Always Visible Action Buttons */}
-            <div className="flex items-center justify-center gap-3">
-              <a
-                href={`tel:${member.phone}`}
-                className="w-9 h-9 rounded-full bg-white/20 hover:bg-[#B8975A] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 shrink-0"
-                aria-label="Call Advisor"
-              >
-                <FaPhoneAlt className="w-3.5 h-3.5 text-white fill-current shrink-0" />
-              </a>
-
-              <a
-                href={`mailto:${member.email}`}
-                className="w-9 h-9 rounded-full bg-white/20 hover:bg-[#B8975A] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 shrink-0"
-                aria-label="Send Email"
-              >
-                <FaEnvelope className="w-3.5 h-3.5 text-white fill-current shrink-0" />
-              </a>
-
-              <a
-                href={`https://wa.me/${member.phone.replace(/[^0-9]/g, '')}`}
-                target="_blank"
-                rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-white/20 hover:bg-[#25D366] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 shrink-0"
-                aria-label="WhatsApp"
-              >
-                <FaWhatsapp className="w-4 h-4 text-white fill-current shrink-0" />
-              </a>
+            {/* Title / Intro Box */}
+            <div className="p-8 flex flex-col justify-center bg-white rounded-2xl border border-gray-100 shadow-sm">
+              <div className="text-[11px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-2">
+                Expert Advisors
+              </div>
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0D0D0D] mb-4">
+                Our Property Specialists
+              </h2>
+              <p className="text-[#6B6B6B] text-xs sm:text-sm leading-relaxed mb-6">
+                Meet the experienced professionals driving transparency, market analysis, and client success across Nanded City.
+              </p>
+              <div>
+                <a
+                  href="#contact"
+                  className="inline-block bg-[#B8975A] hover:bg-[#9A7A42] text-white px-6 py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase transition-colors"
+                >
+                  Get In Touch
+                </a>
+              </div>
             </div>
+
+            {/* Team Member Photo Cards (Always Visible Info) */}
+            {teamMembers.map((member) => (
+              <div
+                key={member.name}
+                className="group relative h-[360px] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-gray-900 cursor-pointer"
+              >
+                {/* Base Member Photo */}
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Bottom Gradient Protection */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+
+                {/* Main Info Card Overlay (Always Visible) */}
+                <div className="absolute inset-0 flex flex-col justify-end p-6 z-10 text-center items-center">
+                  
+                  {/* Name & Role */}
+                  <h3 className="font-serif text-xl font-bold text-white mb-1 drop-shadow-sm">
+                    {member.name}
+                  </h3>
+                  <p className="text-xs text-[#B8975A] font-medium tracking-wide mb-3">
+                    {member.role}
+                  </p>
+
+                  {/* Accent Line */}
+                  <div className="w-10 h-[2px] bg-[#B8975A]/60 mb-4" />
+
+                  {/* Always Visible Action Buttons */}
+                  <div className="flex items-center justify-center gap-3">
+                    <a
+                      href={`tel:${member.phone}`}
+                      className="w-9 h-9 rounded-full bg-white/20 hover:bg-[#B8975A] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 shrink-0"
+                      aria-label="Call Advisor"
+                    >
+                      <FaPhoneAlt className="w-3.5 h-3.5 text-white fill-current shrink-0" />
+                    </a>
+
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="w-9 h-9 rounded-full bg-white/20 hover:bg-[#B8975A] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 shrink-0"
+                      aria-label="Send Email"
+                    >
+                      <FaEnvelope className="w-3.5 h-3.5 text-white fill-current shrink-0" />
+                    </a>
+
+                    <a
+                      href={`https://wa.me/${member.phone.replace(/[^0-9]/g, '')}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-9 h-9 rounded-full bg-white/20 hover:bg-[#25D366] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 shrink-0"
+                      aria-label="WhatsApp"
+                    >
+                      <FaWhatsapp className="w-4 h-4 text-white fill-current shrink-0" />
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            ))}
 
           </div>
         </div>
-      ))}
+      </section>
 
-    </div>
-  </div>
-</section>
-      {/* Contact Section Component */}
-      <OurPromise />
+
 
       {/* 6. Call to Action Banner */}
       <section className="bg-[#0D0D0D] py-16 px-6 text-center text-white">

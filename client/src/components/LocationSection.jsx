@@ -37,7 +37,7 @@ export default function LocationSection() {
                   <div>
                     <h4 className="text-xs font-semibold text-[#0D0D0D] uppercase tracking-wider mb-0.5">Office Address</h4>
                     <p className="text-xs text-[#6B6B6B] leading-relaxed">
-                      Shop No. 12, Destination Center, Nanded City, Sinhagad Road, Pune, Maharashtra 411041
+                      Shop No. G-97, Destination Centre-1, Opposite to D-Mart, Nanded City Pune - 411041
                     </p>
                   </div>
                 </div>
@@ -48,7 +48,7 @@ export default function LocationSection() {
                   </div>
                   <div>
                     <h4 className="text-xs font-semibold text-[#0D0D0D] uppercase tracking-wider mb-0.5">Working Hours</h4>
-                    <p className="text-xs text-[#6B6B6B]">Monday – Sunday: 10:00 AM – 8:00 PM</p>
+                    <p className="text-xs text-[#6B6B6B]">Monday – Sunday: 10:00 AM – 9:00 PM</p>
                   </div>
                 </div>
 
@@ -58,7 +58,7 @@ export default function LocationSection() {
                   </div>
                   <div>
                     <h4 className="text-xs font-semibold text-[#0D0D0D] uppercase tracking-wider mb-0.5">Phone & Email</h4>
-                    <p className="text-xs text-[#6B6B6B]">+91 98765 43210</p>
+                    <p className="text-xs text-[#6B6B6B]">+91 96239 35935</p>
                     <p className="text-xs text-[#6B6B6B]">info@bestproperties.com</p>
                   </div>
                 </div>
