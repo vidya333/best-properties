@@ -60,7 +60,7 @@ const PropertyTable = ({ onEdit, refreshKey }) => {
             <h4 className="fw-bold text-dark mb-1">Manage Properties</h4>
             <p className="text-muted small mb-0">Overview of all listed real estate properties and broker data</p>
           </div>
-          <span className="badge bg-dark px-3 py-2 fs-6">
+          <span className="badge px-3 py-2 fs-6 text-white" style={{ backgroundColor: "#c5a059" }}>
             Total: {filteredProperties.length}
           </span>
         </div>
@@ -134,7 +134,7 @@ const PropertyTable = ({ onEdit, refreshKey }) => {
                     </td>
                     <td>
                       <div>
-                        <span className="badge bg-light text-secondary border fw-normal px-2 py-1 mb-1">
+                        <span className="badge fw-normal px-2 py-1 mb-1" style={{ backgroundColor: "#fdfbf7", color: "#c5a059", border: "1px solid #c5a059" }}>
                           {property.type}
                         </span>
                       </div>
@@ -189,14 +189,15 @@ const PropertyTable = ({ onEdit, refreshKey }) => {
                     </td>
                     <td className="text-end text-nowrap">
                       <button
-                        className="btn btn-outline-primary btn-sm me-2 px-2 py-1"
+                        className="btn btn-sm me-2 px-2 py-1 shadow-sm"
                         onClick={() => onEdit(property)}
                         title="Edit Property"
+                        style={{ border: "1px solid #c5a059", color: "#c5a059", backgroundColor: "#fff" }}
                       >
                         <i className="bi bi-pencil"></i>
                       </button>
                       <button
-                        className="btn btn-outline-danger btn-sm px-2 py-1"
+                        className="btn btn-outline-danger btn-sm px-2 py-1 shadow-sm"
                         onClick={() => handleDelete(property._id)}
                         title="Delete Property"
                       >
@@ -222,7 +223,7 @@ const PropertyTable = ({ onEdit, refreshKey }) => {
             <nav>
               <ul className="pagination pagination-sm mb-0">
                 <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-                  <button className="page-link" onClick={() => setCurrentPage((p) => p - 1)}>
+                  <button className="page-link text-dark" onClick={() => setCurrentPage((p) => p - 1)}>
                     Previous
                   </button>
                 </li>
@@ -231,13 +232,17 @@ const PropertyTable = ({ onEdit, refreshKey }) => {
                     key={i + 1}
                     className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
                   >
-                    <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
+                    <button 
+                      className="page-link" 
+                      onClick={() => setCurrentPage(i + 1)}
+                      style={currentPage === i + 1 ? { backgroundColor: "#c5a059", borderColor: "#c5a059", color: "#fff" } : { color: "#c5a059" }}
+                    >
                       {i + 1}
                     </button>
                   </li>
                 ))}
                 <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-                  <button className="page-link" onClick={() => setCurrentPage((p) => p + 1)}>
+                  <button className="page-link text-dark" onClick={() => setCurrentPage((p) => p + 1)}>
                     Next
                   </button>
                 </li>

@@ -35,7 +35,7 @@ const AdminLogin = () => {
             <span className="text-white font-serif font-bold text-2xl">B</span>
           </div>
           <h1 className="font-serif text-2xl font-bold text-white mb-1">Admin Access</h1>
-          <p className="text-white/40 text-sm">BEST Properties — Restricted Area</p>
+          <p className="text-white/40 text-sm">BEST Properties - Admin Only Dashboard</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white/5 border border-white/10 p-8 flex flex-col gap-4">
@@ -78,7 +78,7 @@ const AdminLogin = () => {
         </form>
 
         <p className="text-center text-white/20 text-xs mt-6">
-          This page is not publicly linked.
+          This page is not publicly available.
         </p>
       </div>
     </div>

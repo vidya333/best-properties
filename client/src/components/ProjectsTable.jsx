@@ -59,7 +59,7 @@ const ProjectsTable = ({ onEdit, refreshKey }) => {
             <h4 className="fw-bold text-dark mb-1">Manage Projects</h4>
             <p className="text-muted small mb-0">Overview of all real estate projects and features</p>
           </div>
-          <span className="badge bg-dark px-3 py-2 fs-6">
+          <span className="badge px-3 py-2 fs-6 text-white" style={{ backgroundColor: "#c5a059" }}>
             Total: {filteredProjects.length}
           </span>
         </div>
@@ -143,7 +143,7 @@ const ProjectsTable = ({ onEdit, refreshKey }) => {
                       <div className="d-flex flex-wrap gap-1">
                         {project.features && project.features.length > 0 ? (
                           project.features.map((f, i) => (
-                            <span key={i} className="badge bg-light text-secondary border fw-normal px-2 py-1" style={{ fontSize: "0.75rem" }}>
+                            <span key={i} className="badge fw-normal px-2 py-1" style={{ fontSize: "0.75rem", backgroundColor: "#fdfbf7", color: "#c5a059", border: "1px solid #c5a059" }}>
                               {f}
                             </span>
                           ))
@@ -154,14 +154,15 @@ const ProjectsTable = ({ onEdit, refreshKey }) => {
                     </td>
                     <td className="text-end text-nowrap">
                       <button
-                        className="btn btn-outline-primary btn-sm me-2 px-2 py-1"
+                        className="btn btn-sm me-2 px-2 py-1 shadow-sm"
                         onClick={() => onEdit(project)}
                         title="Edit Project"
+                        style={{ border: "1px solid #c5a059", color: "#c5a059", backgroundColor: "#fff" }}
                       >
                         <i className="bi bi-pencil"></i>
                       </button>
                       <button
-                        className="btn btn-outline-danger btn-sm px-2 py-1"
+                        className="btn btn-outline-danger btn-sm px-2 py-1 shadow-sm"
                         onClick={() => handleDelete(project._id)}
                         title="Delete Project"
                       >
@@ -187,22 +188,25 @@ const ProjectsTable = ({ onEdit, refreshKey }) => {
             <nav>
               <ul className="pagination pagination-sm mb-0">
                 <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-                  <button className="page-link" onClick={() => setCurrentPage((p) => p - 1)}>
+                  <button className="page-link text-dark" onClick={() => setCurrentPage((p) => p - 1)}>
                     Previous
                   </button>
                 </li>
                 {Array.from({ length: totalPages }, (_, i) => (
-                  <li
-                    key={i + 1}
-                    className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
-                  >
-                    <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
-                      {i + 1}
-                    </button>
-                  </li>
+                  <tr key={i + 1} style={{ display: "contents" }}>
+                    <li className={`page-item ${currentPage === i + 1 ? "active" : ""}`}>
+                      <button 
+                        className="page-link" 
+                        onClick={() => setCurrentPage(i + 1)}
+                        style={currentPage === i + 1 ? { backgroundColor: "#c5a059", borderColor: "#c5a059", color: "#fff" } : { color: "#c5a059" }}
+                      >
+                        {i + 1}
+                      </button>
+                    </li>
+                  </tr>
                 ))}
                 <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-                  <button className="page-link" onClick={() => setCurrentPage((p) => p + 1)}>
+                  <button className="page-link text-dark" onClick={() => setCurrentPage((p) => p + 1)}>
                     Next
                   </button>
                 </li>

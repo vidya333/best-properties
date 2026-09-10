@@ -106,7 +106,7 @@ const GalleryUpload = ({ onUpload }) => {
   return (
     <div>
       {/* Attached ref here so it scrolls directly to this card */}
-      <form ref={formRef} onSubmit={handleSubmit} className="mt-4 bg-light p-4 rounded-4 shadow-sm">
+      <form ref={formRef} onSubmit={handleSubmit} className="mt-4 bg-light p-4 rounded-4 shadow-sm border">
         <h5 className="mb-3 fw-bold text-dark">
           {editId ? "Edit Media Asset" : "Upload Gallery Media & Categorize"}
         </h5>
@@ -147,13 +147,13 @@ const GalleryUpload = ({ onUpload }) => {
             />
           </div>
           <div className="col-md-2 d-flex align-items-end gap-2">
-            <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+            <button type="submit" className="btn w-100 fw-bold text-white rounded-pill" style={{ backgroundColor: "#c5a059" }} disabled={loading}>
               {loading ? "Saving..." : editId ? "Update" : "Upload"}
             </button>
             {editId && (
               <button 
                 type="button" 
-                className="btn btn-secondary" 
+                className="btn btn-outline-secondary rounded-pill px-3" 
                 onClick={() => { setEditId(null); setTitle(""); setCategory("client-stories"); setFile(null); }}
               >
                 Cancel
@@ -165,8 +165,6 @@ const GalleryUpload = ({ onUpload }) => {
 
       {images.length > 0 && (
         <div className="card border-0 shadow-sm rounded-4 overflow-hidden mt-4">
-          
-          
           <div className="table-responsive">
             <table className="table table-hover align-middle mb-0">
               <thead className="table-light text-uppercase fs-7 text-secondary tracking-wider">
@@ -216,7 +214,7 @@ const GalleryUpload = ({ onUpload }) => {
 
                     {/* Category Badge */}
                     <td className="py-3">
-                      <span className="badge bg-dark bg-opacity-10 text-dark px-2.5 py-1.5 rounded-pill fw-medium">
+                      <span className="badge px-2.5 py-1.5 rounded-pill fw-medium" style={{ backgroundColor: "#fdfbf7", color: "#c5a059", border: "1px solid #c5a059" }}>
                         {img.category ? img.category.replace("-", " ") : "Uncategorized"}
                       </span>
                     </td>
@@ -225,10 +223,10 @@ const GalleryUpload = ({ onUpload }) => {
                     <td className="py-3 text-center">
                       <div className="d-flex justify-content-center gap-2">
                         <button 
-                          className="btn btn-outline-primary btn-sm rounded-circle p-2 lh-1 shadow-sm" 
+                          className="btn btn-sm rounded-circle p-2 lh-1 shadow-sm" 
                           onClick={() => handleEditClick(img)}
                           title="Edit media"
-                          style={{ width: "32px", height: "32px" }}
+                          style={{ width: "32px", height: "32px", border: "1px solid #c5a059", color: "#c5a059", backgroundColor: "#fff" }}
                         >
                           <i className="bi bi-pencil-fill"></i> 
                         </button>
