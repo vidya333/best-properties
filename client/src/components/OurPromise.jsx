@@ -69,8 +69,8 @@ const OurPromise = () => {
             <div className="flex items-center gap-2">
               <i className="bi bi-telephone-fill text-[#B8975A]"></i>
               <a href="tel:+919623935935" className="hover:text-[#B8975A] transition-colors">+91 96239 35935</a>
-              <span className="text-gray-300">/</span>
-              <a href="tel:+919623935935" className="hover:text-[#B8975A] transition-colors">+91 96239 35935</a>
+              {/* <span className="text-gray-300">/</span>
+              <a href="tel:+919623935935" className="hover:text-[#B8975A] transition-colors">+91 96239 35935</a> */}
             </div>
             <div className="flex items-center gap-2">
               <i className="bi bi-envelope-fill text-[#B8975A]"></i>

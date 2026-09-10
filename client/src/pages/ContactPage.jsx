@@ -74,7 +74,7 @@ const ContactPage = () => {
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-[#0D0D0D]">Office Address</h4>
                   <p className="text-xs text-[#6B6B6B] mt-1 leading-relaxed">
-                    Destination Center, Nanded City, Sinhagad Road, Pune, Maharashtra 411041
+                    Shop No. G-97, Destination Centre-1, Opposite to D-Mart, Nanded City Pune - 411041
                   </p>
                 </div>
               </div>
@@ -85,7 +85,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-[#0D0D0D]">Phone Number</h4>
-                  <p className="text-xs text-[#6B6B6B] mt-1">+91 98765 43210 / +91 91234 56789</p>
+                  <p className="text-xs text-[#6B6B6B] mt-1">+91 96239 35935</p>
                 </div>
               </div>
 
@@ -105,7 +105,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-[#0D0D0D]">Working Hours</h4>
-                  <p className="text-xs text-[#6B6B6B] mt-1">Monday – Sunday: 9:30 AM – 7:00 PM</p>
+                  <p className="text-xs text-[#6B6B6B] mt-1">Monday – Sunday: 10:00 AM – 9:00 PM</p>
                 </div>
               </div>
             </div>
