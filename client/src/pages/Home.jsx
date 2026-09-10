@@ -12,6 +12,7 @@ import NewProjectsSection from '../components/NewProjectsSection';
 import ActionStrip from '../components/ActionStrip';
 import GoogleBusinessLive from '../components/GoogleBusinessLive';
 import FloatingActions from '../components/FloatingActions';
+import ClientStoriesWidget from '../components/ClientStoriesWidget';
 
 // Fallback Mock Properties matching public/images folder
 const FALLBACK_PROPERTIES = [
@@ -93,8 +94,8 @@ const Home = () => {
   const [showAll, setShowAll] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [bhk, setBhk] = useState('');
-  const propertiesPerPage = 4;
 
+  const propertiesPerPage = 4;
   const indexOfLastProperty = currentPage * propertiesPerPage;
   const indexOfFirstProperty = indexOfLastProperty - propertiesPerPage;
   const currentProperties = filteredProperties.slice(indexOfFirstProperty, indexOfLastProperty);
@@ -387,6 +388,9 @@ const Home = () => {
 
       {/* Testimonials */}
       <TestimonialCarousel />
+
+      {/* Client Stories */}
+      <ClientStoriesWidget/>
 
       {/* Location Map */}
       <LocationSection/>

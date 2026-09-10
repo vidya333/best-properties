@@ -118,7 +118,7 @@ const Gallery = ({ items = [] }) => {
 
   const filteredItems = useMemo(() => {
     if (activeTab === "all") return displayItems;
-    return displayItems.filter((item) => item.type === activeTab);
+    return displayItems.filter((item) => item.category === activeTab || item.type === activeTab);
   }, [displayItems, activeTab]);
 
   const handlePrev = (e) => {
@@ -205,28 +205,29 @@ const Gallery = ({ items = [] }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
         
         {/* Filter Tabs */}
-        <div className="flex justify-center items-center gap-3 mb-10">
-          {[
-            { id: "all", label: "All Media" },
-            { id: "image", label: "Photos" },
-            { id: "video", label: "Video Tours" },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => {
-                setActiveTab(tab.id);
-                setSelectedItemIndex(null);
-              }}
-              className={`px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
-                activeTab === tab.id
-                  ? "bg-[#B8975A] text-white shadow-md scale-105"
-                  : "bg-white text-gray-600 hover:bg-gray-200 border border-gray-200"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+      <div className="flex flex-wrap justify-center items-center gap-3 mb-10">
+        {[
+          { id: "all", label: "All Media" },
+          { id: "client-stories", label: "Client Stories" },
+          { id: "flats-locations", label: "Flats & Locations" },
+          { id: "inside-office", label: "Inside Office" },
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => {
+              setActiveTab(tab.id);
+              setSelectedItemIndex(null);
+            }}
+            className={`px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+              activeTab === tab.id
+                ? "bg-[#B8975A] text-white shadow-md scale-105"
+                : "bg-white text-gray-600 hover:bg-gray-200 border border-gray-200"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

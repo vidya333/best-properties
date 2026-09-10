@@ -4,6 +4,8 @@ import api from "../api";
 
 const GalleryUpload = ({ onUpload }) => {
   const [file, setFile] = useState(null);
+  const [category, setCategory] = useState("client-stories");
+  const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState([]);
 
@@ -32,21 +34,24 @@ const GalleryUpload = ({ onUpload }) => {
 
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("category", category);
+    formData.append("title", title);
 
     setLoading(true);
     try {
       const res = await api.post("/media/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      onUpload(res.data);
-      setImages([...images, res.data]);
+      if (onUpload) onUpload(res.data);
+      setImages([res.data, ...images]);
+      setFile(null);
+      setTitle("");
       alert("Uploaded successfully!");
     } catch (err) {
       console.error(err);
       alert("Upload failed. Please try again.");
     } finally {
       setLoading(false);
-      setFile(null);
     }
   };
 
@@ -63,16 +68,48 @@ const GalleryUpload = ({ onUpload }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="mt-4 bg-light text-center p-2 rounded">
-        <input 
-          type="file" 
-          onChange={(e) => setFile(e.target.files[0])} 
-          disabled={loading} 
-          className="form-control d-inline-block w-auto"
-        />
-        <button type="submit" className="btn btn-primary ms-2" disabled={loading}>
-          {loading ? "Uploading..." : "Upload"}
-        </button>
+      <form onSubmit={handleSubmit} className="mt-4 bg-light p-4 rounded shadow-sm">
+        <h5 className="mb-3">Upload Gallery Media & Categorize</h5>
+        <div className="row g-3">
+          <div className="col-md-4">
+            <label className="form-label text-xs font-bold">Select File (Image/Video)</label>
+            <input 
+              type="file" 
+              onChange={(e) => setFile(e.target.files[0])} 
+              disabled={loading} 
+              className="form-control"
+              required
+            />
+          </div>
+          <div className="col-md-3">
+            <label className="form-label text-xs font-bold">Category</label>
+            <select 
+              value={category} 
+              onChange={(e) => setCategory(e.target.value)}
+              className="form-select"
+            >
+              <option value="client-stories">Client Stories</option>
+              <option value="flats-locations">Flats & Locations</option>
+              <option value="inside-office">Inside Office</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div className="col-md-3">
+            <label className="form-label text-xs font-bold">Title / Caption</label>
+            <input 
+              type="text" 
+              placeholder="e.g. Happy Family at Asawari" 
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="form-control"
+            />
+          </div>
+          <div className="col-md-2 d-flex align-items-end">
+            <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+              {loading ? "Uploading..." : "Upload"}
+            </button>
+          </div>
+        </div>
       </form>
 
       {images.length > 0 && (
@@ -80,7 +117,8 @@ const GalleryUpload = ({ onUpload }) => {
           <thead className="table-dark">
             <tr>
               <th>Preview</th>
-              <th>File Name</th>
+              <th>Title</th>
+              <th>Category</th>
               <th className="text-center">Actions</th>
             </tr>
           </thead>
@@ -89,19 +127,21 @@ const GalleryUpload = ({ onUpload }) => {
               <tr key={img._id}>
                 <td>
                   {img.type === "image" ? (
-                    <img src={getFullUrl(img.src)} alt="uploaded" width="60" height="60" className="rounded" />
+                    <img src={getFullUrl(img.src)} alt="uploaded" width="60" height="60" className="rounded object-fit-cover" />
                   ) : (
-                    <video width="100" src={getFullUrl(img.src)} />
+                    <video width="80" src={getFullUrl(img.src)} />
                   )}
                 </td>
-                <td className="text-break">{img.src.split("/").pop()}</td>
+                <td>{img.title || "Untitled"}</td>
+                <td>
+                  <span className="badge bg-secondary text-uppercase">{img.category}</span>
+                </td>
                 <td className="text-center">
                   <button 
                     className="btn btn-danger btn-sm" 
                     onClick={() => handleDelete(img._id)}
                     title="Delete"
                   >
-                    {/* Trash Icon */}
                     <i className="bi bi-trash"></i> 
                   </button>
                 </td>

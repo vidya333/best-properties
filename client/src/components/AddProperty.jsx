@@ -7,7 +7,7 @@ import api from "../api";
 import GalleryUpload from './GalleryUpload';
 
 const AddProperty = () => {
-  const formRef = useRef(null); // Reference for smooth scrolling
+  const formRef = useRef(null); 
 
   const [formData, setFormData] = useState({
     title: '', location: '', price: '', rent: '', description: '',
