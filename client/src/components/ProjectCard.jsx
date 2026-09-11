@@ -56,70 +56,23 @@ const getFullUrl = (path) => {
   return `${API}${path}`;
 };
 
-function MiniProjectLoader() {
-  const [seconds, setSeconds] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSeconds((s) => s + 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
+function SkeletonLoader() {
   return (
-    <section className="container my-5 d-flex justify-content-center align-items-center">
-      <div
-        className="position-relative text-center px-4 py-4"
-        style={{
-          width: "100%",
-          maxWidth: "360px",
-          borderRadius: "28px",
-          background: "rgba(255,255,255,0.75)",
-          backdropFilter: "blur(18px)",
-          WebkitBackdropFilter: "blur(18px)",
-          border: "1px solid rgba(255,255,255,0.3)",
-        }}
-      >
-        <div className="d-flex justify-content-center gap-2 mb-3">
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              style={{
-                width: "12px",
-                height: "12px",
-                borderRadius: "50%",
-                background: "linear-gradient(135deg, #ff7a00, #ffb347)",
-                animation: "loaderBounce 1.4s infinite ease-in-out",
-                animationDelay: `${i * 0.15}s`,
-              }}
-            />
-          ))}
+    <section className="bg-[#F8F5F0] py-12 px-2 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto animate-pulse">
+        <div className="h-4 w-32 bg-gray-200 rounded mx-auto mb-2"></div>
+        <div className="h-8 w-64 bg-gray-200 rounded mx-auto mb-10"></div>
+        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#eae5d9]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-5 h-[350px] bg-gray-200 rounded-xl"></div>
+            <div className="lg:col-span-7 space-y-4">
+              <div className="h-8 bg-gray-200 rounded w-3/4"></div>
+              <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+              <div className="h-20 bg-gray-200 rounded w-full"></div>
+              <div className="h-10 bg-gray-200 rounded w-1/3"></div>
+            </div>
+          </div>
         </div>
-
-        <h5 className="fw-semibold mb-1">
-          Loading Properties & Projects
-        </h5>
-
-        <p className="text-muted mb-3" style={{ fontSize: "14px" }}>
-          First visit might take few seconds...
-        </p>
-
-        <div style={{ height: "5px", borderRadius: "999px", background: "#ececec", overflow: "hidden" }}>
-          <div
-            style={{
-              height: "100%",
-              width: `${Math.min(seconds * 5, 90)}%`,
-              borderRadius: "999px",
-              background: "linear-gradient(90deg, #db6f0a, #dd7119)",
-              transition: "width 1s ease",
-            }}
-          />
-        </div>
-
-        <small className="text-muted d-block mt-2">
-          {seconds}s elapsed
-        </small>
       </div>
     </section>
   );
@@ -151,7 +104,7 @@ export default function ProjectCard() {
   }, []);
 
   if (loading) {
-    return <MiniProjectLoader />;
+    return <SkeletonLoader />;
   }
 
   const handleBrochureClick = (brochureUrl, projectTitle) => {
@@ -168,7 +121,7 @@ export default function ProjectCard() {
   };
 
   return (
-    <section className="bg-[#F8F5F0] py-16 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#F8F5F0] py-16 px-2 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] text-center mb-2">
           New Launches
@@ -179,7 +132,7 @@ export default function ProjectCard() {
 
         <Swiper 
           modules={[Navigation]} 
-          spaceBetween={30} 
+          spaceBetween={20} 
           slidesPerView={1} 
           navigation={false}
           autoHeight={true}
@@ -221,16 +174,16 @@ function ProjectSlide({ project, onBrochureClick }) {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-[#eae5d9] p-4 sm:p-6 lg:p-8">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div className="bg-white rounded-2xl shadow-sm border border-[#eae5d9] p-3 sm:p-6 lg:p-8 mx-1 sm:mx-0">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
         
         {/* Left Column: Image Container */}
         <div className="lg:col-span-5 flex flex-col gap-4">
-          <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[420px] bg-[#f9f8f6] rounded-xl overflow-hidden border border-[#eae5d9] flex items-center justify-center p-2">
+          <div className="relative w-full h-[280px] sm:h-[380px] lg:h-[420px] rounded-xl overflow-hidden border border-[#eae5d9]">
             <img
               src={projectImages[currentIndex]}
               alt={project.title}
-              className="w-full h-full object-contain transition-all duration-300"
+              className="w-full h-full object-cover transition-all duration-300"
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = "/images/builder1.jpg";
@@ -241,7 +194,7 @@ function ProjectSlide({ project, onBrochureClick }) {
               <>
                 <button 
                   onClick={prevImage}
-                  className="absolute top-1/2 left-3 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10"
+                  className="absolute top-1/2 left-3 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10 cursor-pointer"
                   title="Previous Image"
                 >
                   <i className="bi bi-chevron-left"></i>
@@ -249,7 +202,7 @@ function ProjectSlide({ project, onBrochureClick }) {
 
                 <button 
                   onClick={nextImage}
-                  className="absolute top-1/2 right-3 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10"
+                  className="absolute top-1/2 right-3 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10 cursor-pointer"
                   title="Next Image"
                 >
                   <i className="bi bi-chevron-right"></i>
@@ -339,18 +292,18 @@ function ProjectSlide({ project, onBrochureClick }) {
 function CustomNavButtons() {
   const swiper = useSwiper();
   return (
-    <div className="flex justify-center items-center  gap-1 mt-10 px-2">
+    <div className="flex justify-center items-center gap-2 mt-8 px-2">
       <button 
-        className="px-5 py-2 text-xs font-bold uppercase tracking-widest rounded-full border border-[#B8975A] text-[#B8975A] hover:bg-[#B8975A] hover:text-white transition-all bg-white cursor-pointer" 
+        className="px-5 py-2 text-xs font-bold uppercase tracking-widest rounded-full border border-[#B8975A] text-[#B8975A] hover:bg-[#B8975A] hover:text-white transition-all bg-white cursor-pointer shadow-xs" 
         onClick={() => swiper.slidePrev()}
       >
-        ← Prev Project
+        ← Prev
       </button>
       <button 
-        className="px-5 py-2 text-xs font-bold uppercase tracking-widest rounded-full border border-[#B8975A] text-[#B8975A] hover:bg-[#B8975A] hover:text-white transition-all bg-white cursor-pointer" 
+        className="px-5 py-2 text-xs font-bold uppercase tracking-widest rounded-full border border-[#B8975A] text-[#B8975A] hover:bg-[#B8975A] hover:text-white transition-all bg-white cursor-pointer shadow-xs" 
         onClick={() => swiper.slideNext()}
       >
-        Next Project →
+        Next →
       </button>
     </div>
   );
