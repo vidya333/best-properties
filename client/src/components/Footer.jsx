@@ -26,11 +26,12 @@ const Footer = () => {
               RERA No: A52100044024
             </div>
 
-            <div className="flex gap-4">
+            {/* Social Links including Google Business Profile */}
+            <div className="flex flex-wrap gap-3">
               {[
-                { icon: 'bi-facebook', href: 'https://www.facebook.com/madhukar.mangnale.1?mibextid=wwXIfr&rdid=Hd9j4rG1cY1SjNTh&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1LZ8iBYHtQ%2F%3Fmibextid%3DwwXIfr#' },
+                { icon: 'bi-facebook', href: 'https://www.facebook.com/share/1LZ8iBYHtQ/?mibextid=wwXIfr' },
                 { icon: 'bi-instagram', href: 'https://www.instagram.com/nanded_city_best_properties' },
-                { icon: 'bi-linkedin', href: 'https://linkedin.com' },
+                { icon: 'bi-google', href: 'https://maps.app.goo.gl/vFvbeVZCmtCFwNVLA?g_st=ic' },
                 { icon: 'bi-whatsapp', href: 'https://wa.me/919623935935' },
               ].map(({ icon, href }) => (
                 <a
@@ -70,7 +71,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Explore / Browse By (Replaced inflexible property types) */}
+          {/* Explore / Browse By */}
           <div>
             <h5 className="text-[11px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-5 font-sans">
               Explore
@@ -106,14 +107,14 @@ const Footer = () => {
               <a href="tel:+919623935935" className="text-white/40 hover:text-white transition-colors">
                 +91 96239 35935
               </a>
-              <a href="mailto:vidya.nk07@gmail.com" className="text-white/40 hover:text-white transition-colors">
+              <a href="mailto:info@bestproperties.com" className="text-white/40 hover:text-white transition-colors">
                 info@bestproperties.com
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar: Perfectly Aligned */}
+        {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/20">
           <p>© {new Date().getFullYear()} BEST Properties. All rights reserved.</p>
           

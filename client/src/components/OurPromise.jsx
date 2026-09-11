@@ -49,7 +49,7 @@ const OurPromise = () => {
               { icon: 'bi-shield-check', text: 'Verified listings with full legal clarity' },
               { icon: 'bi-currency-rupee', text: 'Transparent pricing, zero hidden charges' },
               { icon: 'bi-headset', text: 'End-to-end support from search to possession' },
-              { icon: 'bi-geo-alt', text: '12+ years of Nanded City market expertise' },
+              { icon: 'bi-geo-alt', text: '20+ years of Nanded City market expertise' },
             ].map(({ icon, text }) => (
               <div key={text} className="flex items-center gap-3 p-2.5 bg-[#FAF9F5] rounded border border-gray-100">
                 <div className="w-7 h-7 rounded bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center flex-shrink-0">

@@ -231,7 +231,7 @@ const Home = () => {
 
             {/* Floating Stat Card 1 - Experience Badge */}
             <div className="absolute -top-6 -left-4 sm:-left-6 bg-white p-5 shadow-xl border-l-4 border-[#B8975A] rounded-sm max-w-[180px]">
-              <div className="text-3xl font-serif font-bold text-[#0D0D0D]">12+</div>
+              <div className="text-3xl font-serif font-bold text-[#0D0D0D]">20+</div>
               <p className="text-[11px] font-medium text-[#6B6B6B] uppercase tracking-wider mt-0.5">
                 Years Market Leadership
               </p>

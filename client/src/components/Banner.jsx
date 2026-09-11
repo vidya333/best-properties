@@ -35,19 +35,19 @@ const slides = [
 const Banner = () => {
   const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const t = setInterval(() => setCurrent(p => (p + 1) % slides.length), 5000);
     return () => clearInterval(t);
   }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      window.location.href = `/?search=${encodeURIComponent(searchQuery)}`;
-    }
-  };
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   if (searchQuery.trim()) {
+  //     window.location.href = `/?search=${encodeURIComponent(searchQuery)}`;
+  //   }
+  // };
 
   const slide = slides[current];
 

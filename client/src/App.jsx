@@ -6,7 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import PropertyTypePage from './pages/PropertyTypePage';
 import PropertyDetailPage from './pages/PropertyDetailPage';
-import AllPropertiesPage from './pages/AllPropertiesPage'; // <-- 1. IMPORT THIS
+import AllPropertiesPage from './pages/AllPropertiesPage'; 
 import AboutUsPage from './pages/AboutUsPage';
 import GalleryPage from './pages/GalleryPage';
 import LoanServices from './pages/LoanServices';

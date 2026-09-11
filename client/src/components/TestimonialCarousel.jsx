@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import api, { getImageUrl } from '../api'; 
 
-const testimonials = [
+const fallbackTestimonials = [
   {
     name: 'Prashant',
     location: 'Asawari, Nanded City',
@@ -46,12 +47,40 @@ const testimonials = [
 ];
 
 export default function TestimonialCarousel() {
+  const [testimonials, setTestimonials] = useState(fallbackTestimonials);
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await api.get('/testimonials');
+        if (res.data && res.data.length > 0) {
+          // Map backend schema fields to match what the carousel expects
+          const mappedData = res.data.map(item => ({
+            name: item.clientName || 'Client',
+            location: item.company ? `${item.company}${item.role ? ` - ${item.role}` : ''}` : (item.role || 'Verified Client'),
+            feedback: item.message || '',
+            tag: item.tag || 'Verified Buyer',
+            rating: item.rating || 5,
+            image: item.image ? getImageUrl(item.image) : null,
+          }));
+          setTestimonials(mappedData);
+        }
+      } catch (err) {
+        console.error("Failed to fetch backend testimonials, using fallback data:", err);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
+  useEffect(() => {
+    if (testimonials.length === 0) return;
     const t = setInterval(() => setCurrent(p => (p + 1) % testimonials.length), 6000);
     return () => clearInterval(t);
-  }, []);
+  }, [testimonials.length]);
+
+  if (!testimonials || testimonials.length === 0) return null;
 
   const item = testimonials[current];
 
@@ -81,9 +110,17 @@ export default function TestimonialCarousel() {
             
             {/* Left Profile Box */}
             <div className="md:col-span-4 flex flex-col items-center md:items-start">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#B8975A] to-[#8C6D33] rounded-full flex items-center justify-center font-serif text-white font-bold text-2xl shadow-md mb-3">
-                {item.name.charAt(0)}
-              </div>
+              {item.image ? (
+                <img 
+                  src={item.image} 
+                  alt={item.name} 
+                  className="w-16 h-16 rounded-full object-cover shadow-md mb-3 border-2 border-[#B8975A]"
+                />
+              ) : (
+                <div className="w-16 h-16 bg-gradient-to-br from-[#B8975A] to-[#8C6D33] rounded-full flex items-center justify-center font-serif text-white font-bold text-2xl shadow-md mb-3">
+                  {item.name ? item.name.charAt(0) : 'C'}
+                </div>
+              )}
 
               <h3 className="font-semibold text-[#0D0D0D] text-lg text-center md:text-left">{item.name}</h3>
               <p className="text-xs text-[#6B6B6B] mb-2">{item.location}</p>
@@ -96,7 +133,7 @@ export default function TestimonialCarousel() {
             {/* Right Quote Content */}
             <div className="md:col-span-8 flex flex-col justify-center">
               <div className="flex gap-1 text-[#B8975A] mb-3">
-                {[...Array(item.rating)].map((_, idx) => (
+                {[...Array(Number(item.rating) || 5)].map((_, idx) => (
                   <i key={idx} className="bi bi-star-fill text-xs"></i>
                 ))}
               </div>
@@ -149,11 +186,11 @@ export default function TestimonialCarousel() {
             <div className="text-[11px] text-[#6B6B6B] uppercase tracking-wider mt-0.5">Transparent Deals</div>
           </div>
           <div>
-            <div className="text-xl sm:text-2xl font-bold font-serif text-[#B8975A]">500+</div>
+            <div className="text-xl sm:text-2xl font-bold font-serif text-[#B8975A]">20+</div>
             <div className="text-[11px] text-[#6B6B6B] uppercase tracking-wider mt-0.5">Families Assisted</div>
           </div>
           <div>
-            <div className="text-xl sm:text-2xl font-bold font-serif text-[#B8975A]">12+ Yrs</div>
+            <div className="text-xl sm:text-2xl font-bold font-serif text-[#B8975A]">20+ Yrs</div>
             <div className="text-[11px] text-[#6B6B6B] uppercase tracking-wider mt-0.5">Nanded City Expertise</div>
           </div>
           <div>

@@ -7,6 +7,7 @@ const authRoutes = require('./routes/authRoutes');
 const propertyRoutes = require('./routes/propertyRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const mediaRoutes = require("./routes/mediaRoutes");
+const testimonialRoutes = require("./routes/testimonialRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,6 +21,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
 app.use('/api/projects', projectRoutes);
 app.use("/api/media", mediaRoutes);
+app.use("/api/testimonials",testimonialRoutes)
 
 // Connect to Database and start server
 connectDB().then(() => {

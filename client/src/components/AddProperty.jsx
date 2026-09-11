@@ -6,6 +6,7 @@ import AddProject from './AddProject';
 import ProjectsTable from './ProjectsTable';
 import api from "../api"; 
 import GalleryUpload from './GalleryUpload';
+import AddTestimonial from './AddTestimonial';
 
 const AddProperty = () => {
   const navigate = useNavigate(); // Hook for redirection
@@ -173,6 +174,13 @@ const AddProperty = () => {
               onClick={() => { setActiveTab('media'); setShowForm(false); }}
             >
               <i className="bi bi-images"></i> Gallery Media
+            </button>
+            <button 
+              className={`list-group-item list-group-item-action py-3 px-4 border-0 d-flex align-items-center gap-3 ${activeTab === 'testimonials' ? 'fw-bold text-dark' : 'text-secondary'}`}
+              style={activeTab === 'testimonials' ? { backgroundColor: '#fdfbf7', borderLeft: '4px solid #c5a059', color: '#c5a059' } : {}}
+              onClick={() => { setActiveTab('testimonials'); setShowForm(false); }}
+            >
+              <i className="bi bi-chat-quote"></i> Testimonials
             </button>
           </div>
 
@@ -410,6 +418,13 @@ const AddProperty = () => {
           {activeTab === 'media' && (
             <div className="bg-white p-4 rounded-4 shadow-sm border">
               <GalleryUpload onUpload={handleUpload} />
+            </div>
+          )}
+
+          {/* TAB 4: TESTIMONIALS */}
+          {activeTab === 'testimonials' && (
+            <div>
+              <AddTestimonial />
             </div>
           )}
 
