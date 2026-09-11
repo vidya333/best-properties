@@ -489,7 +489,7 @@ const Home = () => {
       </section>
 
       {/* Projects */}
-      <section className="bg-[#F8F5F0] py-16 px-6">
+      <section className="bg-[#F8F5F0] py-16 px-3">
         <div className="max-w-7xl mx-auto">
           <ProjectCard />
         </div>

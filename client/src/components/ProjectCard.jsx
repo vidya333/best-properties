@@ -168,12 +168,12 @@ export default function ProjectCard() {
   };
 
   return (
-    <section className="bg-[#F8F5F0] py-12 px-4 md:px-6">
+    <section className="bg-[#F8F5F0] py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] text-center mb-2">
           New Launches
         </div>
-        <h2 className="font-serif text-3xl font-bold text-center text-[#0D0D0D] mb-8">
+        <h2 className="font-serif text-3xl font-bold text-center text-[#0D0D0D] mb-10">
           Featured Projects
         </h2>
 
@@ -221,12 +221,12 @@ function ProjectSlide({ project, onBrochureClick }) {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-[#eae5d9] p-6 md:p-8">
+    <div className="bg-white rounded-2xl shadow-sm border border-[#eae5d9] p-4 sm:p-6 lg:p-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
         {/* Left Column: Image Container */}
         <div className="lg:col-span-5 flex flex-col gap-4">
-          <div className="relative w-full h-[300px] md:h-[360px] bg-[#f9f8f6] rounded-xl overflow-hidden border border-[#eae5d9] flex items-center justify-center p-2">
+          <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[420px] bg-[#f9f8f6] rounded-xl overflow-hidden border border-[#eae5d9] flex items-center justify-center p-2">
             <img
               src={projectImages[currentIndex]}
               alt={project.title}
@@ -241,7 +241,7 @@ function ProjectSlide({ project, onBrochureClick }) {
               <>
                 <button 
                   onClick={prevImage}
-                  className="absolute top-1/2 left-2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10"
+                  className="absolute top-1/2 left-3 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10"
                   title="Previous Image"
                 >
                   <i className="bi bi-chevron-left"></i>
@@ -249,7 +249,7 @@ function ProjectSlide({ project, onBrochureClick }) {
 
                 <button 
                   onClick={nextImage}
-                  className="absolute top-1/2 right-2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10"
+                  className="absolute top-1/2 right-3 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10"
                   title="Next Image"
                 >
                   <i className="bi bi-chevron-right"></i>
@@ -276,22 +276,22 @@ function ProjectSlide({ project, onBrochureClick }) {
 
         {/* Right Column: Project Details */}
         <div className="lg:col-span-7 flex flex-col justify-center">
-          <h3 className="font-serif text-3xl md:text-4xl font-bold text-[#B8975A] mb-1">
+          <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#B8975A] mb-1">
             {project.title}
           </h3>
-          <p className="text-sm font-semibold uppercase tracking-widest text-gray-400 mb-3">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-gray-400 mb-4">
             {project.subtitle}
           </p>
-          <p className="text-gray-600 text-sm leading-relaxed mb-2">
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
             {project.description}
           </p>
 
           {project.features && (
-            <div className="mb-5">
-              <h4 className="text-sm font-bold uppercase tracking-widest text-[#0D0D0D] mb-2.5 mt-2 border-b border-[#eae5d9] pb-2">
+            <div className="mb-6">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0D0D0D] mb-3 border-b border-[#eae5d9] pb-2">
                 Key Features & Amenities
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
                 {project.features.map((feature, idx) => (
                   <div key={idx} className="flex items-start gap-2 text-sm text-gray-600">
                     <span className="text-[#B8975A] font-bold">•</span>
@@ -302,13 +302,13 @@ function ProjectSlide({ project, onBrochureClick }) {
             </div>
           )}
 
-          <div className="pt-3 border-t border-[#eae5d9]">
+          <div className="pt-4 border-t border-[#eae5d9]">
             <p className="text-sm font-semibold text-[#0D0D0D] mb-0.5">Where business meets opportunity!</p>
-            <p className="text-[11px] text-gray-400 mb-3">Book your space now – Limited availability!</p>
+            <p className="text-xs text-gray-400 mb-4">Book your space now – Limited availability!</p>
 
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-3">
               <button
-                className="px-4 py-2 rounded-full bg-[#B8975A] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#a3824b] transition-all shadow-xs cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-[#B8975A] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#a3824b] transition-all shadow-xs cursor-pointer"
                 onClick={() => onBrochureClick(project.brochure, project.title)}
               >
                 Download Brochure
@@ -317,13 +317,13 @@ function ProjectSlide({ project, onBrochureClick }) {
                 href={`https://wa.me/${project.whatsappNumber || ''}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full border border-[#B8975A] text-[#B8975A] text-xs font-bold uppercase tracking-widest hover:bg-[#B8975A] hover:text-white transition-all text-decoration-none"
+                className="px-5 py-2.5 rounded-full border border-[#B8975A] text-[#B8975A] text-xs font-bold uppercase tracking-widest hover:bg-[#B8975A] hover:text-white transition-all text-decoration-none"
               >
                 WhatsApp
               </a>
               <a
                 href={`mailto:${project.email || ''}`}
-                className="px-4 py-2 rounded-full border border-gray-300 text-gray-700 text-xs font-bold uppercase tracking-widest hover:border-gray-800 transition-all text-decoration-none"
+                className="px-5 py-2.5 rounded-full border border-gray-300 text-gray-700 text-xs font-bold uppercase tracking-widest hover:border-gray-800 transition-all text-decoration-none"
               >
                 Email Us
               </a>
@@ -339,7 +339,7 @@ function ProjectSlide({ project, onBrochureClick }) {
 function CustomNavButtons() {
   const swiper = useSwiper();
   return (
-    <div className="flex justify-center items-center  gap-1 mt-3 px-2">
+    <div className="flex justify-center items-center  gap-1 mt-10 px-2">
       <button 
         className="px-5 py-2 text-xs font-bold uppercase tracking-widest rounded-full border border-[#B8975A] text-[#B8975A] hover:bg-[#B8975A] hover:text-white transition-all bg-white cursor-pointer" 
         onClick={() => swiper.slidePrev()}

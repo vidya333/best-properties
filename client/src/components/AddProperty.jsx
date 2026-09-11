@@ -199,7 +199,7 @@ const AddProperty = () => {
         {/* MOBILE HORIZONTAL NAV */}
         <div className="d-lg-none col-12 mb-3 px-3">
           <div className="bg-white p-2 rounded-3 d-flex justify-content-between align-items-center shadow-sm border flex-wrap gap-2">
-            <div className="d-flex gap-1">
+            <div className="d-flex gap-1 flex-wrap">
               <button 
                 className={`btn btn-sm ${activeTab === 'properties' ? 'fw-bold text-dark' : 'text-secondary'}`}
                 style={activeTab === 'properties' ? { backgroundColor: '#fdfbf7', borderBottom: '2px solid #c5a059' } : {}}
@@ -220,6 +220,13 @@ const AddProperty = () => {
                 onClick={() => { setActiveTab('media'); setShowForm(false); }}
               >
                 Gallery
+              </button>
+              <button 
+                className={`btn btn-sm ${activeTab === 'testimonials' ? 'fw-bold text-dark' : 'text-secondary'}`}
+                style={activeTab === 'testimonials' ? { backgroundColor: '#fdfbf7', borderBottom: '2px solid #c5a059' } : {}}
+                onClick={() => { setActiveTab('testimonials'); setShowForm(false); }}
+              >
+                Testimonials
               </button>
             </div>
             <button
