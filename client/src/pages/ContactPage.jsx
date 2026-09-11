@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane } from 'react-icons/fa';
 import api from '../api';
 import LocationSection from '../components/LocationSection';
 
@@ -24,22 +24,23 @@ const ContactPage = () => {
     setSubmitting(true);
 
     try {
-      // Sends contact form enquiry directly to your backend API
+      // Tries backend API first
       await api.post('/contact-inquiries', formData);
       setSubmitted(true);
     } catch (err) {
-      // Fallback: Opens email client if backend is disconnected
-      const adminEmail = "madhukarmangnale89@gmail.com";
-      const mailSubject = encodeURIComponent(`[Website Contact] ${formData.subject || 'General Inquiry'}`);
-      const mailBody = encodeURIComponent(
-        `Name: ${formData.name}\n` +
-        `Phone: ${formData.phone}\n` +
-        `Email: ${formData.email}\n\n` +
-        `Message:\n${formData.message}`
-      );
-      window.location.href = `mailto:${adminEmail}?subject=${mailSubject}&body=${mailBody}`;
-      setSubmitted(true);
+      console.warn("Backend unavailable, launching WhatsApp alternative...", err);
     } finally {
+      // Directly fires WhatsApp with the structured message payload
+      try {
+        const businessWhatsApp = "919920155441";
+        const text = `Hii, my name is ${formData.name} (email: ${formData.email || 'N/A'}). Subject: ${formData.subject || 'General Inquiry'}.\n\nMessage:\n${formData.message}\n\nYou can contact me on this number: ${formData.phone}`;
+        const encodedMessage = encodeURIComponent(text);
+        
+        window.open(`https://wa.me/${businessWhatsApp}?text=${encodedMessage}`, "_blank");
+        setSubmitted(true);
+      } catch (waErr) {
+        console.error("Error launching WhatsApp:", waErr);
+      }
       setSubmitting(false);
     }
   };
@@ -122,7 +123,7 @@ const ContactPage = () => {
                 </p>
                 <button 
                   onClick={() => { setSubmitted(false); setFormData({ name: '', phone: '', email: '', subject: '', message: '' }); }}
-                  className="mt-4 border-2 border-[#B8975A] text-[#B8975A] hover:bg-[#B8975A] hover:text-black text-xs font-bold uppercase tracking-widest px-6 py-3 transition-all"
+                  className="mt-4 border-2 border-[#B8975A] text-[#B8975A] hover:bg-[#B8975A] hover:text-black text-xs font-bold uppercase tracking-widest px-6 py-3 transition-all cursor-pointer"
                 >
                   Send Another Message
                 </button>
@@ -197,8 +198,9 @@ const ContactPage = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full bg-[#0D0D0D] hover:bg-[#B8975A] hover:text-black text-white text-xs font-bold py-4 uppercase tracking-widest transition-all duration-300"
+                  className="w-full bg-[#0D0D0D] hover:bg-[#B8975A] hover:text-black text-white text-xs font-bold py-4 uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
+                  <FaPaperPlane className="text-xs" />
                   {submitting ? 'Sending Message...' : 'Submit Inquiry'}
                 </button>
               </form>
@@ -208,7 +210,7 @@ const ContactPage = () => {
         </div>
       </div>
       {/* location */}
-          <LocationSection/>
+      <LocationSection/>
     </div>
   );
 };

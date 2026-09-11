@@ -73,7 +73,7 @@ export default function LocationSection() {
                 rel="noopener noreferrer"
                 className="btn-gold w-full py-2.5 text-xs font-semibold tracking-wider uppercase text-center flex items-center justify-center gap-2 rounded-sm"
               >
-                <i className="bi bi-sign-turn-right text-sm"></i>
+                <i className="bi bi-sign-turn-right text-sm me-1"></i>
                 Get Directions
               </a>
             </div>

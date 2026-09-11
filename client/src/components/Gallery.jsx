@@ -110,6 +110,7 @@ const Gallery = ({ items = [] }) => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(null);
   const [activeTab, setActiveTab] = useState("all");
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({ name: '', phone: '' });
 
   const getFullUrl = (path) => {
     if (!path) return "";
@@ -135,6 +136,22 @@ const Gallery = ({ items = [] }) => {
   const handleInquirySubmit = (e) => {
     e.preventDefault();
     setFormSubmitted(true);
+
+    try {
+      const businessWhatsApp = "919920155441";
+      
+      // Formatting the details cleanly for WhatsApp
+      const text = `Hii, my name is ${formData.name}. I would like to request a personalized live video tour over WhatsApp. You can contact me on this number: ${formData.phone}`;
+
+      const encodedMessage = encodeURIComponent(text);
+      
+      // Open WhatsApp chat with prefilled message
+      window.open(`https://wa.me/${businessWhatsApp}?text=${encodedMessage}`, "_blank");
+    } catch (err) {
+      console.error(err);
+      alert('Error opening WhatsApp');
+    }
+
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
@@ -310,17 +327,21 @@ const Gallery = ({ items = [] }) => {
                   type="text"
                   placeholder="Your Name"
                   required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-[#B8975A]"
                 />
                 <input
                   type="tel"
                   placeholder="Phone Number"
                   required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-[#B8975A]"
                 />
                 <button
                   type="submit"
-                  className="bg-[#B8975A] hover:bg-[#9A7A42] text-white px-6 py-3 rounded-xl text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shrink-0"
+                  className="bg-[#B8975A] hover:bg-[#9A7A42] text-white px-6 py-3 rounded-xl text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shrink-0 cursor-pointer"
                 >
                   <FaPaperPlane className="text-xs" /> Request Tour
                 </button>
@@ -339,7 +360,7 @@ const Gallery = ({ items = [] }) => {
           {/* Close Button */}
           <button
             onClick={() => setSelectedItemIndex(null)}
-            className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/20 transition-all"
+            className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/20 transition-all cursor-pointer"
             title="Close Lightbox"
           >
             <FaTimes className="text-lg" />
@@ -348,7 +369,7 @@ const Gallery = ({ items = [] }) => {
           {/* Previous Arrow */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-[#B8975A] text-white flex items-center justify-center border border-white/20 transition-all"
+            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-[#B8975A] text-white flex items-center justify-center border border-white/20 transition-all cursor-pointer"
             title="Previous Item"
           >
             <FaChevronLeft className="text-base" />
@@ -357,7 +378,7 @@ const Gallery = ({ items = [] }) => {
           {/* Next Arrow */}
           <button
             onClick={handleNext}
-            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-[#B8975A] text-white flex items-center justify-center border border-white/20 transition-all"
+            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-[#B8975A] text-white flex items-center justify-center border border-white/20 transition-all cursor-pointer"
             title="Next Item"
           >
             <FaChevronRight className="text-base" />

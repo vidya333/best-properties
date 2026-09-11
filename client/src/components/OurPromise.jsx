@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { API } from '../config';
 
 const OurPromise = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
@@ -8,19 +7,26 @@ const OurPromise = () => {
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
     setSubmitting(true);
+
     try {
-      await fetch(`${API}/api/enquiry`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      const businessWhatsApp = "919920155441";
+      
+      // Formatting the details cleanly for WhatsApp
+      const text = `Hii, my name is ${formData.name} (email: ${formData.email}). ${formData.message} You can contact me on this number: ${formData.phone}`;
+
+      const encodedMessage = encodeURIComponent(text);
+      
+      // Open WhatsApp chat with prefilled message
+      window.open(`https://wa.me/${businessWhatsApp}?text=${encodedMessage}`, "_blank");
+
       setSubmitted(true);
       setFormData({ name: '', email: '', phone: '', message: '' });
     } catch (err) {
-      alert('Error submitting enquiry. Please try again.');
+      console.error(err);
+      alert('Error opening WhatsApp. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -59,43 +65,6 @@ const OurPromise = () => {
               </div>
             ))}
           </div>
-
-          {/* Contact Info */}
-          {/* <div className="border-t border-gray-100 pt-4 flex flex-col gap-2 text-xs text-[#6B6B6B]">
-            <div className="flex items-center gap-2">
-              <i className="bi bi-geo-alt-fill text-[#B8975A]"></i>
-              <span>Shop No. G-97, Destination Centre-1, Opposite to D-Mart, Nanded City Pune - 411041</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <i className="bi bi-telephone-fill text-[#B8975A]"></i>
-              <a href="tel:+919623935935" className="hover:text-[#B8975A] transition-colors">+91 96239 35935</a>
-              
-            </div>
-            <div className="flex items-center gap-2">
-              <i className="bi bi-envelope-fill text-[#B8975A]"></i>
-              <a href="mailto:madhukarmangnale89@gmail.com" className="hover:text-[#B8975A] transition-colors">madhukarmangnale89@gmail.com</a>
-            </div>
-          </div> */}
-
-          {/* Social Links */}
-          {/* <div className="flex gap-2 mt-4 pt-3 border-t border-gray-100">
-            {[
-              { icon: 'bi-facebook', href: 'https://www.facebook.com/madhukar.mangnale.1?mibextid=wwXIfr&rdid=Hd9j4rG1cY1SjNTh&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1LZ8iBYHtQ%2F%3Fmibextid%3DwwXIfr#' },
-              { icon: 'bi-instagram', href: 'https://www.instagram.com/nanded_city_best_properties' },
-              { icon: 'bi-google', href: 'https://maps.app.goo.gl/vFvbeVZCmtCFwNVLA?g_st=ic' },
-              { icon: 'bi-whatsapp', href: 'https://wa.me/919623935935' },
-            ].map(({ icon, href }) => (
-              <a
-                key={icon}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded bg-[#FAF9F5] border border-gray-200 flex items-center justify-center text-[#6B6B6B] hover:border-[#B8975A] hover:text-[#B8975A] hover:bg-white transition-all"
-              >
-                <i className={`bi ${icon} text-xs`}></i>
-              </a>
-            ))}
-          </div> */}
         </div>
 
         {/* Right — Contact Form */}
@@ -112,7 +81,7 @@ const OurPromise = () => {
               <p className="text-[#6B6B6B] text-xs">We'll get back to you within 24 hours.</p>
               <button
                 onClick={() => setSubmitted(false)}
-                className="mt-4 text-[#B8975A] text-xs font-semibold underline"
+                className="mt-4 text-[#B8975A] text-xs font-semibold underline cursor-pointer"
               >
                 Submit another
               </button>
@@ -132,7 +101,7 @@ const OurPromise = () => {
                   value={formData[name]}
                   onChange={handleChange}
                   required
-                  className="w-full border border-gray-200 rounded px-3.5 py-2.5 text-xs text-[#0D0D0D] outline-none focus:border-[#B8975A] transition-colors"
+                  className="w-full border border-gray-200 rounded px-3.5 py-2.5 text-xs text-[#0D0D0D] outline-none focus:border-[#B8975A] transition-colors bg-white"
                 />
               ))}
               <textarea
@@ -142,14 +111,14 @@ const OurPromise = () => {
                 onChange={handleChange}
                 rows={3}
                 required
-                className="w-full border border-gray-200 rounded px-3.5 py-2.5 text-xs text-[#0D0D0D] outline-none focus:border-[#B8975A] transition-colors resize-none"
+                className="w-full border border-gray-200 rounded px-3.5 py-2.5 text-xs text-[#0D0D0D] outline-none focus:border-[#B8975A] transition-colors resize-none bg-white"
               />
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-[#B8975A] hover:bg-[#9A7A42] text-white py-2.5 rounded text-xs font-semibold uppercase tracking-wider transition-colors disabled:opacity-60 mt-1"
+                className="w-full bg-[#B8975A] hover:bg-[#9A7A42] text-white py-2.5 rounded text-xs font-semibold uppercase tracking-wider transition-colors disabled:opacity-60 mt-1 cursor-pointer"
               >
-                {submitting ? 'Submitting...' : 'Send Enquiry'}
+                {submitting ? 'Redirecting...' : 'Send to WhatsApp'}
               </button>
             </form>
           )}

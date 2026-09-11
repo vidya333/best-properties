@@ -1,57 +1,20 @@
-import React from 'react';
+import React,{ useState } from 'react';
 
 import { 
   FaPhoneAlt, 
-  FaEnvelope, 
   FaWhatsapp, 
   FaShieldAlt, 
   FaMapMarkerAlt, 
   FaInstagram, 
   FaFacebookF, 
   FaGlobe,
-  FaChartLine,
 } from 'react-icons/fa';
 import LocationSection from '../components/LocationSection';
+import EnquiryModal from '../components/EnquiryModal';
 
-const teamMembers = [
-  {
-    name: 'Jagruti',
-    role: 'Founder & Principal Advisor',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80',
-    phone: '+919112456000',
-    email: 'vidya.nk07@gmail.com',
-  },
-  {
-    name: 'Rajesh Sharma',
-    role: 'Head of Sales & Acquisitions',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80',
-    phone: '+919657096000',
-    email: 'vidya.nk07@gmail.com',
-  },
-  {
-    name: 'Priya Kulkarni',
-    role: 'Legal & Documentation Lead',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80',
-    phone: '+919112456000',
-    email: 'vidya.nk07@gmail.com',
-  },
-  {
-    name: 'Amit Deshmukh',
-    role: 'Commercial Investments Specialist',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80',
-    phone: '+919657096000',
-    email: 'vidya.nk07@gmail.com',
-  },
-  {
-    name: 'Neha Patil',
-    role: 'Client Relations & Leasing Lead',
-    image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=600&q=80',
-    phone: '+919112456000',
-    email: 'vidya.nk07@gmail.com',
-  },
-];
 
 const AboutUsPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="bg-white">
       
@@ -404,7 +367,7 @@ const AboutUsPage = () => {
 
           <div className="text-center mt-8">
             <a
-              href="#contact"
+              href="#action"
               className="inline-block bg-[#0D0D0D] hover:bg-[#B8975A] text-white py-2 px-6 rounded text-[11px] font-semibold tracking-wider uppercase transition-colors"
             >
               Schedule A Visit
@@ -417,7 +380,7 @@ const AboutUsPage = () => {
       <LocationSection/>
 
       {/* 6. Call to Action Banner */}
-      <section className="bg-[#0D0D0D] py-16 px-6 text-center text-white">
+      <section className="bg-[#0D0D0D] py-16 px-6 text-center text-white" id="action">
         <div className="max-w-2xl mx-auto">
           <div className="text-[10px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-2">
             Get Started
@@ -428,14 +391,22 @@ const AboutUsPage = () => {
           <p className="text-white/60 text-xs sm:text-sm mb-6 max-w-lg mx-auto">
             Get in touch with our advisory team today for transparent advice and curated property choices.
           </p>
-          <a
-            href="#contact"
-            className="inline-block bg-[#B8975A] hover:bg-[#9A7A42] text-white py-2.5 px-6 rounded text-xs font-semibold tracking-wider uppercase transition-colors"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="inline-block bg-[#B8975A] hover:bg-[#9A7A42] text-white py-2.5 px-6 rounded text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer"
           >
             Contact Our Team
-          </a>
+          </button>
         </div>
       </section>
+
+      {/* Enquiry Modal Popup */}
+      {isModalOpen && (
+        <EnquiryModal 
+          onClose={() => setIsModalOpen(false)} 
+          prefillMessage="Hi, I would like to get in touch with your advisory team for transparent advice and curated property choices."
+        />
+      )}
     </div>
   );
 };
