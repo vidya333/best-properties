@@ -11,6 +11,7 @@ import {
   FaGlobe,
   FaChartLine,
 } from 'react-icons/fa';
+import LocationSection from '../components/LocationSection';
 
 const teamMembers = [
   {
@@ -76,88 +77,6 @@ const AboutUsPage = () => {
         </div>
       </section>
 
-      {/* About Section - Split Layout */}
-      <section className="bg-[#FAF9F5] py-20 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            
-            {/* Left Column: Content & Features */}
-            <div className="space-y-6">
-              <div>
-                <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] mb-3">
-                  About BEST Properties
-                </div>
-                <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0D0D0D] leading-tight">
-                  Nanded City's Most Trusted <br className="hidden sm:inline" />
-                  <span className="text-[#B8975A]">Property Experts</span>
-                </h2>
-              </div>
-
-              <p className="text-[#6B6B6B] text-base leading-relaxed">
-                BEST Properties is built on a foundation of unyielding trust, absolute transparency, and unrivaled local expertise. With over 12 years deep-rooted in the Nanded City real estate market, we bridge the gap between dream spaces and seamless ownership.
-              </p>
-
-              {/* Highlight Feature Cards Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="bg-white p-4 border border-gray-100 shadow-sm rounded-sm">
-                  <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center mb-2">
-                    <FaShieldAlt className="text-base" />
-                  </div>
-                  <h4 className="font-semibold text-sm text-[#0D0D0D]">100% Verified Deals</h4>
-                  <p className="text-xs text-[#6B6B6B] mt-1">Clear legal checks & transparent title documentation.</p>
-                </div>
-
-                <div className="bg-white p-4 border border-gray-100 shadow-sm rounded-sm">
-                  <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center mb-2">
-                    <FaChartLine className="text-base" />
-                  </div>
-                  <h4 className="font-semibold text-sm text-[#0D0D0D]">Market Valuation</h4>
-                  <p className="text-xs text-[#6B6B6B] mt-1">Accurate, data-driven pricing for buying & selling.</p>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <a
-                  href="#contact"
-                  className="btn-gold px-8 py-3.5 text-xs tracking-wider uppercase font-semibold inline-flex items-center gap-2"
-                >
-                  Get In Touch
-                
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Visual Showcase & Stats */}
-            <div className="relative">
-              <div className="relative rounded-lg overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
-                  alt="Nanded City Real Estate"
-                  className="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              </div>
-
-              {/* Floating Stat Card 1 */}
-              <div className="absolute -top-6 -left-4 sm:-left-6 bg-white p-5 shadow-xl border-l-4 border-[#B8975A] rounded-sm max-w-[180px]">
-                <div className="text-3xl font-serif font-bold text-[#0D0D0D]">20+</div>
-                <p className="text-[11px] font-medium text-[#6B6B6B] uppercase tracking-wider mt-0.5">
-                  Years Market Leadership
-                </p>
-              </div>
-
-              {/* Floating Stat Card 2 */}
-              <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-[#1A1A1A] text-white p-5 shadow-2xl rounded-sm max-w-[200px]">
-                <div className="text-3xl font-serif font-bold text-[#B8975A]">500+</div>
-                <p className="text-[11px] font-medium text-gray-300 uppercase tracking-wider mt-0.5">
-                  Happy Families & Investors
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* 2. Editorial Narrative Section */}
       <section className="py-20 px-6 bg-white">
@@ -180,7 +99,7 @@ const AboutUsPage = () => {
               Navigating the real estate landscape can often feel overwhelming due to legal complexities, shifting micro-market rates, and unreliable listings. At BEST Properties, we eliminate this uncertainty. We personally evaluate every property listing, verify ownership documentation, analyze true valuation trends, and provide straight-forward advice. Whether you are looking for your first home in developments like Bageshree, Asawari, and Pancham, or managing a portfolio of commercial real estate, our dedicated guidance remains constant.
             </p>
             <p>
-              Our operating philosophy is simple — client interests come first. We do not focus merely on closing transactions; we focus on building relationships that last long after the key handover. From initial search to mortgage assistance, negotiation, legal vetting, and final registration, our team walks alongside you at every step of the journey.
+              Our operating philosophy is simple - client interests come first. We do not focus merely on closing transactions; we focus on building relationships that last long after the key handover. From initial search to mortgage assistance, negotiation, legal vetting, and final registration, our team walks alongside you at every step of the journey.
             </p>
           </div>
 
@@ -313,8 +232,8 @@ const AboutUsPage = () => {
 
       {/* 3. Office Showcase Section */}
       <section className="py-20 px-6 bg-white border-t border-gray-100">
-  <div className="max-w-6xl mx-auto">
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
       {/* Left: Office Info */}
       <div className="lg:col-span-7 space-y-6">
@@ -494,98 +413,8 @@ const AboutUsPage = () => {
         </div>
       </section>
 
-      {/* 5. Team Members Grid */}
-      <section className="py-20 px-6 bg-[#FAF9F5] border-t border-gray-200/60">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            {/* Title / Intro Box */}
-            <div className="p-8 flex flex-col justify-center bg-white rounded-2xl border border-gray-100 shadow-sm">
-              <div className="text-[11px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-2">
-                Expert Advisors
-              </div>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0D0D0D] mb-4">
-                Our Property Specialists
-              </h2>
-              <p className="text-[#6B6B6B] text-xs sm:text-sm leading-relaxed mb-6">
-                Meet the experienced professionals driving transparency, market analysis, and client success across Nanded City.
-              </p>
-              <div>
-                <a
-                  href="#contact"
-                  className="inline-block bg-[#B8975A] hover:bg-[#9A7A42] text-white px-6 py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase transition-colors"
-                >
-                  Get In Touch
-                </a>
-              </div>
-            </div>
-
-            {/* Team Member Photo Cards (Always Visible Info) */}
-            {teamMembers.map((member) => (
-              <div
-                key={member.name}
-                className="group relative h-[360px] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-gray-900 cursor-pointer"
-              >
-                {/* Base Member Photo */}
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-
-                {/* Bottom Gradient Protection */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-
-                {/* Main Info Card Overlay (Always Visible) */}
-                <div className="absolute inset-0 flex flex-col justify-end p-6 z-10 text-center items-center">
-                  
-                  {/* Name & Role */}
-                  <h3 className="font-serif text-xl font-bold text-white mb-1 drop-shadow-sm">
-                    {member.name}
-                  </h3>
-                  <p className="text-xs text-[#B8975A] font-medium tracking-wide mb-3">
-                    {member.role}
-                  </p>
-
-                  {/* Accent Line */}
-                  <div className="w-10 h-[2px] bg-[#B8975A]/60 mb-4" />
-
-                  {/* Always Visible Action Buttons */}
-                  <div className="flex items-center justify-center gap-3">
-                    <a
-                      href={`tel:${member.phone}`}
-                      className="w-9 h-9 rounded-full bg-white/20 hover:bg-[#B8975A] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 shrink-0"
-                      aria-label="Call Advisor"
-                    >
-                      <FaPhoneAlt className="w-3.5 h-3.5 text-white fill-current shrink-0" />
-                    </a>
-
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="w-9 h-9 rounded-full bg-white/20 hover:bg-[#B8975A] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 shrink-0"
-                      aria-label="Send Email"
-                    >
-                      <FaEnvelope className="w-3.5 h-3.5 text-white fill-current shrink-0" />
-                    </a>
-
-                    <a
-                      href={`https://wa.me/${member.phone.replace(/[^0-9]/g, '')}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-9 h-9 rounded-full bg-white/20 hover:bg-[#25D366] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 shrink-0"
-                      aria-label="WhatsApp"
-                    >
-                      <FaWhatsapp className="w-4 h-4 text-white fill-current shrink-0" />
-                    </a>
-                  </div>
-
-                </div>
-              </div>
-            ))}
-
-          </div>
-        </div>
-      </section>
+      {/* Location Section */}
+      <LocationSection/>
 
       {/* 6. Call to Action Banner */}
       <section className="bg-[#0D0D0D] py-16 px-6 text-center text-white">
@@ -607,7 +436,6 @@ const AboutUsPage = () => {
           </a>
         </div>
       </section>
-
     </div>
   );
 };
