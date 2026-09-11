@@ -5,8 +5,9 @@ import { API } from '../config';
 const PropertyTable = ({ onEdit, refreshKey }) => {
   const [properties, setProperties] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState("rent"); // "rent" or "sale"
   const [currentPage, setCurrentPage] = useState(1);
-  const propertiesPerPage = 8;
+  const propertiesPerPage = 5;
 
   useEffect(() => {
     fetchProperties();
@@ -37,7 +38,19 @@ const PropertyTable = ({ onEdit, refreshKey }) => {
     return `${API}${path}`; 
   };
 
-  const filteredProperties = properties.filter((property) => {
+  // 1. Filter by Tab (Rent vs Sale/Resale) first
+  const tabFilteredProperties = properties.filter((property) => {
+    const status = (property.availableFor || "").toLowerCase();
+    if (activeTab === "rent") {
+      return status === "rent";
+    } else {
+      // Group both resale and purchase under the "Sale" tab
+      return status === "resale" || status === "purchase" || status === "sale";
+    }
+  });
+
+  // 2. Then filter by Search Term
+  const filteredProperties = tabFilteredProperties.filter((property) => {
     const term = searchTerm.toLowerCase();
     return (
       property.title.toLowerCase().includes(term) ||
@@ -63,6 +76,33 @@ const PropertyTable = ({ onEdit, refreshKey }) => {
           <span className="badge px-3 py-2 fs-6 text-white" style={{ backgroundColor: "#c5a059" }}>
             Total: {filteredProperties.length}
           </span>
+        </div>
+
+        {/* Tab Navigation for Rent vs Sale */}
+        <div className="d-flex gap-2 mb-4 border-bottom pb-3">
+          <button
+            className={`btn btn-sm px-4 fw-semibold ${activeTab === "rent" ? "text-white" : "text-dark bg-light"}`}
+            style={activeTab === "rent" ? { backgroundColor: "#c5a059", borderColor: "#c5a059" } : { borderColor: "#dee2e6" }}
+            onClick={() => {
+              setActiveTab("rent");
+              setCurrentPage(1);
+            }}
+          >
+            For Rent ({properties.filter(p => (p.availableFor || "").toLowerCase() === "rent").length})
+          </button>
+          <button
+            className={`btn btn-sm px-4 fw-semibold ${activeTab === "sale" ? "text-white" : "text-dark bg-light"}`}
+            style={activeTab === "sale" ? { backgroundColor: "#c5a059", borderColor: "#c5a059" } : { borderColor: "#dee2e6" }}
+            onClick={() => {
+              setActiveTab("sale");
+              setCurrentPage(1);
+            }}
+          >
+            For Sale / Resale ({properties.filter(p => {
+              const s = (p.availableFor || "").toLowerCase();
+              return s === "resale" || s === "purchase" || s === "sale";
+            }).length})
+          </button>
         </div>
 
         {/* Search bar */}
@@ -209,7 +249,7 @@ const PropertyTable = ({ onEdit, refreshKey }) => {
               ) : (
                 <tr>
                   <td colSpan="9" className="text-center py-4 text-muted">
-                    No properties found matching your search.
+                    No properties found matching your selection.
                   </td>
                 </tr>
               )}

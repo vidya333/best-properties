@@ -40,11 +40,11 @@ const OurPromise = () => {
           </h2>
           <p className="text-[#6B6B6B] text-xs sm:text-sm leading-relaxed mb-5">
             When you choose <strong className="text-[#B8975A] font-semibold">BEST Properties</strong>, you're not just
-            finding a property — you're entering a partnership built on trust, transparency,
+            finding a property - you're entering a partnership built on trust, transparency,
             and expertise.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
             {[
               { icon: 'bi-shield-check', text: 'Verified listings with full legal clarity' },
               { icon: 'bi-currency-rupee', text: 'Transparent pricing, zero hidden charges' },
@@ -55,13 +55,13 @@ const OurPromise = () => {
                 <div className="w-7 h-7 rounded bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center flex-shrink-0">
                   <i className={`bi ${icon} text-xs`}></i>
                 </div>
-                <p className="text-[#333333] text-xs font-medium leading-snug">{text}</p>
+                <p className="text-[#333333] text-sm font-medium leading-snug">{text}</p>
               </div>
             ))}
           </div>
 
           {/* Contact Info */}
-          <div className="border-t border-gray-100 pt-4 flex flex-col gap-2 text-xs text-[#6B6B6B]">
+          {/* <div className="border-t border-gray-100 pt-4 flex flex-col gap-2 text-xs text-[#6B6B6B]">
             <div className="flex items-center gap-2">
               <i className="bi bi-geo-alt-fill text-[#B8975A]"></i>
               <span>Shop No. G-97, Destination Centre-1, Opposite to D-Mart, Nanded City Pune - 411041</span>
@@ -69,21 +69,20 @@ const OurPromise = () => {
             <div className="flex items-center gap-2">
               <i className="bi bi-telephone-fill text-[#B8975A]"></i>
               <a href="tel:+919623935935" className="hover:text-[#B8975A] transition-colors">+91 96239 35935</a>
-              {/* <span className="text-gray-300">/</span>
-              <a href="tel:+919623935935" className="hover:text-[#B8975A] transition-colors">+91 96239 35935</a> */}
+              
             </div>
             <div className="flex items-center gap-2">
               <i className="bi bi-envelope-fill text-[#B8975A]"></i>
-              <a href="mailto:vidya.nk07@gmail.com" className="hover:text-[#B8975A] transition-colors">info@bestproperties.com</a>
+              <a href="mailto:madhukarmangnale89@gmail.com" className="hover:text-[#B8975A] transition-colors">madhukarmangnale89@gmail.com</a>
             </div>
-          </div>
+          </div> */}
 
           {/* Social Links */}
-          <div className="flex gap-2 mt-4 pt-3 border-t border-gray-100">
+          {/* <div className="flex gap-2 mt-4 pt-3 border-t border-gray-100">
             {[
               { icon: 'bi-facebook', href: 'https://www.facebook.com/madhukar.mangnale.1?mibextid=wwXIfr&rdid=Hd9j4rG1cY1SjNTh&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1LZ8iBYHtQ%2F%3Fmibextid%3DwwXIfr#' },
               { icon: 'bi-instagram', href: 'https://www.instagram.com/nanded_city_best_properties' },
-              { icon: 'bi-linkedin', href: 'https://linkedin.com' },
+              { icon: 'bi-google', href: 'https://maps.app.goo.gl/vFvbeVZCmtCFwNVLA?g_st=ic' },
               { icon: 'bi-whatsapp', href: 'https://wa.me/919623935935' },
             ].map(({ icon, href }) => (
               <a
@@ -96,13 +95,13 @@ const OurPromise = () => {
                 <i className={`bi ${icon} text-xs`}></i>
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Right — Contact Form */}
         <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-lg border border-gray-200 shadow-sm">
           <h3 className="font-serif text-xl font-bold text-[#0D0D0D] mb-1">Get In Touch</h3>
-          <p className="text-[#6B6B6B] text-xs mb-5">Fill out the form and our team will reach out shortly.</p>
+          <p className="text-[#6B6B6B] text-xs mb-2">Fill out the form and our team will reach out shortly.</p>
 
           {submitted ? (
             <div className="text-center py-8">

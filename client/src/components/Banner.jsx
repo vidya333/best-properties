@@ -4,30 +4,30 @@ import EnquiryModal from './EnquiryModal';
 const slides = [
   {
     img: '/images/ecopark1.jpg',
-    label: 'Welcome To',
-    title: 'BEST Properties &\nDevelopers',
-    sub: 'BEST Properties – Madhukar Mangnale | Real Estate Agent',
+    label: 'Welcome',
+    title: 'Welcome to \n BEST Properties',
+    sub: ' BEST PROPERTIES | Madhukar Mangnale - Most Trusted Real Estate Agent',
     desc: 'Your trusted partner in Nanded City Pune. Delivering absolute transparency, unyielding trust, and deep-rooted local expertise to bring you your dream spaces.',
   },
   {
     img: '/images/circle.jpg',
     label: 'Residential',
-    title: 'Find Your Perfect\nHome in Pune',
-    sub: 'Premium apartments & villas in Nanded City',
-    desc: 'Discover luxurious living spaces thoughtfully designed for modern families. Nestled in prime locations across Nanded City, Pune, our properties blend world-class amenities with tranquil surroundings.',
+    title: 'Find Your Perfect\n Home in Pune',
+    sub: ' BEST PROPERTIES | Madhukar Mangnale - Most Trusted Real Estate Agent',
+    desc: 'Discover luxurious living spaces thoughtfully designed for modern families. Nestled in prime locations across Nanded City, blending  world-class amenities with tranquil surroundings.',
   },
   {
     img: '/images/droneview.jpg',
     label: 'Investment',
     title: 'Smart Property\nInvestments',
-    sub: 'High-value properties with exceptional returns',
+    sub: ' BEST PROPERTIES | Madhukar Mangnale - Most Trusted Real Estate Agent',
     desc: 'Maximize your wealth with handpicked real estate opportunities across high-growth corridors. Benefit from strong capital appreciation, high rental yields, and seamless end-to-end guidance.',
   },
   {
     img: '/images/nandedcity.jpg',
     label: 'Commercial',
-    title: 'Premium Commercial\nSpaces',
-    sub: 'Where business meets opportunity in Pune',
+    title: 'Premium \n Commercial Spaces',
+    sub: ' BEST PROPERTIES | Madhukar Mangnale - Most Trusted Real Estate Agent',
     desc: 'Position your business for success in prime corporate hubs. Offering modern office spaces, high-footfall retail units, and state-of-the-art infrastructure tailored for modern enterprises.',
   },
 ];
@@ -87,7 +87,7 @@ const Banner = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-[#B8975A] text-base sm:text-lg font-medium mb-2">
+          <p className="text-[#B8975A] text-base sm:text-lg font-medium mb-2 bg-black/50 rounded px-2 py-1 inline-block">
             {slide.sub}
           </p>
 

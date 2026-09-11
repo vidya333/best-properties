@@ -13,7 +13,8 @@ import {
   FaCheckCircle
 } from 'react-icons/fa';
 import "bootstrap/dist/css/bootstrap.min.css";
-import NewProjectsSection from "./NewProjectsSection";
+import TestimonialCarousel from "./TestimonialCarousel";
+// import NewProjectsSection from "./NewProjectsSection";
 
 // 12 High-Res Fallback Items
 const FALLBACK_ITEMS = [
@@ -283,53 +284,7 @@ const Gallery = ({ items = [] }) => {
       </div>
 
       {/* 4. Township Master Plan Map Highlights */}
-      <section className="bg-white py-16 border-y border-gray-200/60 mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-[11px] font-bold tracking-[3px] uppercase text-[#B8975A]">
-              Township Layout
-            </span>
-            <h2 className="font-serif text-2xl sm:text-4xl font-bold text-gray-900 mt-1">
-              Master Plan Highlights
-            </h2>
-            <p className="text-gray-500 text-xs sm:text-sm mt-2">
-              Locate major sectors, green belts, and commercial hubs across Nanded City.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Residential Towers",
-                subtitle: "Asawari, Sargam & Pancham",
-                desc: "High-rise towers designed with maximum cross-ventilation and panoramic valley views.",
-                tag: "Phase I & II"
-              },
-              {
-                title: "Destination Centre",
-                subtitle: "Commercial & Retail Hub",
-                desc: "Walkable shopping plazas, essential stores, banks, and dining spots built right inside.",
-                tag: "Township Center"
-              },
-              {
-                title: "Sports & Green Spaces",
-                subtitle: "Clubhouse & Eco Park",
-                desc: "Over 70% open green space with jogging tracks, swimming pools, and tennis courts.",
-                tag: "Lifestyle"
-              }
-            ].map((box, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-[#FAF9F6] border border-gray-200/80 hover:border-[#B8975A] transition-all duration-300">
-                <span className="text-[10px] uppercase tracking-wider font-bold text-[#B8975A] bg-[#B8975A]/10 px-3 py-1 rounded-full">
-                  {box.tag}
-                </span>
-                <h3 className="font-serif text-lg font-bold text-gray-900 mt-4 mb-1">{box.title}</h3>
-                <h4 className="text-xs text-[#B8975A] font-semibold mb-3">{box.subtitle}</h4>
-                <p className="text-xs text-gray-600 leading-relaxed">{box.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialCarousel/>
 
       {/* 5. In-Gallery Live Tour Request Form */}
       <section id="inquiry" className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -447,7 +402,7 @@ const Gallery = ({ items = [] }) => {
       )}
 
       {/* new projects */}
-      <NewProjectsSection/>
+      {/* <NewProjectsSection/> */}
     </div>
   );
 };

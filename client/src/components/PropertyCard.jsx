@@ -137,7 +137,7 @@ const PropertyCard = ({ property }) => {
           </a>
 
           <a
-            href={`mailto:${brokerEmail || "vidya.nk07@gmail.com"}?subject=Inquiry%20for%20${encodeURIComponent(title || "Property")}`}
+            href={`mailto:${brokerEmail || "madhukarmangnale89@gmail.com"}?subject=Inquiry%20for%20${encodeURIComponent(title || "Property")}`}
             className="flex-1 bg-[#1A1A1A] hover:bg-black text-white py-1.5 px-2 rounded text-xs font-medium flex items-center justify-center gap-1 transition-colors"
           >
             <i className="bi bi-envelope-fill text-[11px]"></i>
@@ -145,7 +145,7 @@ const PropertyCard = ({ property }) => {
           </a>
 
           <a
-            href={`tel:${brokerPhone || "+919112456000"}`}
+            href={`tel:${brokerPhone || "+919623935935"}`}
             className="flex-1 border border-gray-200 hover:border-[#B8975A] text-[#B8975A] py-1.5 px-2 rounded text-xs font-medium flex items-center justify-center gap-1 transition-colors"
           >
             <i className="bi bi-telephone-fill text-[11px]"></i>

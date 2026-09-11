@@ -94,7 +94,7 @@ export default function TestimonialCarousel() {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-2 bg-[#B8975A]/10 px-3 py-0.5 rounded-full">
-            <i className="bi bi-star-fill text-[8px]"></i> Client Stories
+            <i className="bi bi-star-fill text-[8px]"></i> What Our Clients Say
           </div>
         </div>
 

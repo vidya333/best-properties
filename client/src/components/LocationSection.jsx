@@ -59,7 +59,7 @@ export default function LocationSection() {
                   <div>
                     <h4 className="text-xs font-semibold text-[#0D0D0D] uppercase tracking-wider mb-0.5">Phone & Email</h4>
                     <p className="text-xs text-[#6B6B6B]">+91 96239 35935</p>
-                    <p className="text-xs text-[#6B6B6B]">info@bestproperties.com</p>
+                    <p className="text-xs text-[#6B6B6B] -mt-3 ps-1">madhukarmangnale89@gmail.com</p>
                   </div>
                 </div>
               </div>

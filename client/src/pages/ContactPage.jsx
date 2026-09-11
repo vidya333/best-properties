@@ -29,7 +29,7 @@ const ContactPage = () => {
       setSubmitted(true);
     } catch (err) {
       // Fallback: Opens email client if backend is disconnected
-      const adminEmail = "admin@bestproperties.com";
+      const adminEmail = "madhukarmangnale89@gmail.com";
       const mailSubject = encodeURIComponent(`[Website Contact] ${formData.subject || 'General Inquiry'}`);
       const mailBody = encodeURIComponent(
         `Name: ${formData.name}\n` +
@@ -95,7 +95,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-[#0D0D0D]">Email Address</h4>
-                  <p className="text-xs text-[#6B6B6B] mt-1">contact@bestproperties.com</p>
+                  <p className="text-xs text-[#6B6B6B] mt-1">madhukarmangnale89@gmail.com</p>
                 </div>
               </div>
 

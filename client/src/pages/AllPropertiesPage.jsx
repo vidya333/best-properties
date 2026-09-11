@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropertyCard from '../components/PropertyCard';
 import api from '../api';
-import NewProjectsSection from '../components/NewProjectsSection';
-import ActionStrip from '../components/ActionStrip';
+import ProjectCard from '../components/ProjectCard';
+// import NewProjectsSection from '../components/NewProjectsSection';
 
 // Fallback Mock Properties matching public/images folder
 const FALLBACK_PROPERTIES = [
@@ -213,8 +213,6 @@ const AllPropertiesPage = () => {
   return (
     <div className="pt-28 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        {/* actions strip */}
-        <ActionStrip/>
         
         {/* Header Title Section */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 border-b border-gray-100 pb-6">
@@ -337,7 +335,9 @@ const AllPropertiesPage = () => {
         )}
 
         {/* new projects */}
-        <NewProjectsSection/>
+        {/* <NewProjectsSection/> */}
+
+        <ProjectCard/>
 
       </div>
     </div>

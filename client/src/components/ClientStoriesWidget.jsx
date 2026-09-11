@@ -25,7 +25,7 @@ const ClientStoriesWidget = () => {
     <section className="py-5 bg-light">
       <div className="container">
         <div className="text-center mb-4">
-          <h2 className="fw-bold">Client Stories & Moments</h2>
+          <h2 className="fw-bold text-[#B8975A]">Client Stories & Moments</h2>
           <p className="text-muted">Hear and see how we've helped our clients find their dream spaces.</p>
         </div>
         

@@ -97,15 +97,14 @@ const AddTestimonial = () => {
   };
 
   return (
-    <div className="container-fluid bg-light min-vh-100 text-dark" style={{ paddingTop: "110px" }}>
-      <div className="row justify-content-center">
-        <div className="col-lg-10 col-xl-11 px-4 pb-5">
+    <div className=" bg-light min-vh-100 text-dark" style={{ paddingTop: "10px" }}>
+      <div className="row px-1">
+        <div className="col-lg-10 col-xl-11 px-1 pb-1">
           
           {/* Header Banner */}
           <div className="bg-white p-4 rounded-4 shadow-sm mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3 border">
             <div>
-              <h3 className="fw-bold mb-1 text-dark">Testimonials Management</h3>
-              <p className="text-muted small mb-0">Manage client reviews, ratings, and feedback entries seamlessly.</p>
+              <p className="text-muted  text-xl mb-0">Manage client reviews, ratings, and feedback entries seamlessly.</p>
             </div>
             <button 
               className="btn px-4 py-2 rounded-pill fw-bold shadow-sm"

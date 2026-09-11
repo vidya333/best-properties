@@ -313,75 +313,77 @@ const AboutUsPage = () => {
 
       {/* 3. Office Showcase Section */}
       <section className="py-20 px-6 bg-white border-t border-gray-100">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            {/* Left: Office Info */}
-            <div className="space-y-6">
-              <div>
-                <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] mb-3">
-                  Visit Our Office
-                </div>
-                <h2 className="font-serif text-3xl font-bold text-[#0D0D0D] leading-tight">
-                  Drop By For A Cup Of Coffee & Discussion
-                </h2>
-              </div>
+  <div className="max-w-6xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      {/* Left: Office Info */}
+      <div className="lg:col-span-7 space-y-6">
+        <div>
+          <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] mb-3">
+            Visit Our Office
+          </div>
+          <h2 className="font-serif text-3xl font-bold text-[#0D0D0D] leading-tight">
+            Drop By For A Cup Of Coffee & Discussion
+          </h2>
+        </div>
 
-              <p className="text-[#6B6B6B] text-sm sm:text-base leading-relaxed">
-                We believe in open doors and face-to-face interactions. Visit our established office location in Nanded City to explore active listings, review legal portfolios, and discuss your property requirements directly with Madhukar Mangnale and our team.
-              </p>
+        <p className="text-[#6B6B6B] text-sm sm:text-base leading-relaxed">
+          We believe in open doors and face-to-face interactions. Visit our established office location in Nanded City to explore active listings, review legal portfolios, and discuss your property requirements directly with Madhukar Mangnale and our team.
+        </p>
 
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center shrink-0 mt-1">
-                    <FaMapMarkerAlt />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-sm text-[#0D0D0D]">Office Address</h4>
-                    <p className="text-xs text-[#6B6B6B] mt-0.5">BEST Properties, Shop No. G-97, Destination Centre-1,<br /> Opposite to D-Mart, Nanded City Pune - 411041</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center shrink-0 mt-1">
-                    <FaShieldAlt />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-sm text-[#0D0D0D]">Services Offered</h4>
-                    <p className="text-xs text-[#6B6B6B] mt-0.5">Buy, Sale, Rent & Complete Legal Documentation Support</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <a
-                  href="https://maps.app.goo.gl/vFvbeVZCmtCFwNVLA?g_st=ic"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-bold text-[#B8975A] hover:text-[#0D0D0D] transition-colors"
-                >
-                  <FaMapMarkerAlt /> View Location on Google Maps &rarr;
-                </a>
-              </div>
+        <div className="space-y-3 pt-2">
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center shrink-0 mt-1">
+              <FaMapMarkerAlt />
             </div>
-
-            {/* Right: Office Storefront Photo */}
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-gray-100">
-                <img
-                  src="/images/office.jpeg" 
-                  alt="BEST Properties Office Storefront"
-                  className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-[#B8975A] text-white px-5 py-3 rounded shadow-lg text-xs font-semibold tracking-wider uppercase">
-                Authorized Channel Partners
-              </div>
+            <div>
+              <h4 className="font-semibold text-sm text-[#0D0D0D]">Office Address</h4>
+              <p className="text-xs text-[#6B6B6B] mt-0.5">BEST Properties, Shop No. G-97, Destination Centre-1,<br /> Opposite to D-Mart, Nanded City Pune - 411041</p>
             </div>
+          </div>
 
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 rounded-full bg-[#B8975A]/10 text-[#B8975A] flex items-center justify-center shrink-0 mt-1">
+              <FaShieldAlt />
+            </div>
+            <div>
+              <h4 className="font-semibold text-sm text-[#0D0D0D]">Services Offered</h4>
+              <p className="text-xs text-[#6B6B6B] mt-0.5">Buy, Sale, Rent & Complete Legal Documentation Support</p>
+            </div>
           </div>
         </div>
-      </section>
+
+        <div className="pt-2">
+          <a
+            href="https://maps.app.goo.gl/vFvbeVZCmtCFwNVLA?g_st=ic"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-bold text-[#B8975A] hover:text-[#0D0D0D] transition-colors"
+          >
+            <FaMapMarkerAlt /> View Location on Google Maps &rarr;
+          </a>
+        </div>
+      </div>
+
+      {/* Right: Only the Image Card */}
+      <div className="lg:col-span-5 flex justify-center">
+        <div className="relative">
+          <div className="rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-gray-100 max-w-[380px]">
+            <img
+              src="/images/office.jpeg" 
+              alt="BEST Properties Office Storefront"
+              className="w-full h-[450px] object-contain bg-[#FAF9F5]"
+            />
+          </div>
+          <div className="absolute -bottom-4 -left-4 bg-[#B8975A] text-white px-5 py-2.5 rounded shadow-lg text-[10px] font-semibold tracking-wider uppercase">
+            Authorized Channel Partners
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* 3. The Journey */}
       <section className="py-20 px-6 bg-[#FAF9F5] border-y border-gray-200/60">
@@ -450,45 +452,44 @@ const AboutUsPage = () => {
       </section>
 
       {/* 4. Guided Workflow Section */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div className="lg:col-span-5">
-              <div className="text-[10px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-2">
-                Our Method
-              </div>
-              <h2 className="font-serif text-3xl font-bold text-[#0D0D0D] mb-4">
-                How We Guide You to Your Next Property
-              </h2>
-              <p className="text-[#6B6B6B] text-sm leading-relaxed mb-6">
-                Instead of automated list dumps, we offer a tailored search experience. We walk you through every critical phase so you buy or rent with 100% peace of mind.
-              </p>
-              <a
-                href="#contact"
-                className="inline-block bg-[#0D0D0D] hover:bg-[#B8975A] text-white py-2.5 px-6 rounded text-xs font-semibold tracking-wider uppercase transition-colors"
-              >
-                Schedule A Visit
-              </a>
+      <section className="py-12 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <div className="text-[10px] font-semibold tracking-[3px] uppercase text-[#B8975A] mb-2">
+              Our Method
             </div>
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#0D0D0D] mb-3">
+              How We Guide You to Your Next Property
+            </h2>
+            <p className="text-[#6B6B6B] text-xs md:text-sm leading-relaxed">
+              Instead of automated list dumps, we offer a tailored search experience for 100% peace of mind.
+            </p>
+          </div>
 
-            <div className="lg:col-span-7 space-y-4">
-              {[
-                { step: '01', title: 'Need Analysis & Selection', text: 'We understand your exact spatial requirements, preferred neighborhood, budget parameters, and timeline.' },
-                { step: '02', title: 'Physical Property Tours', text: 'We accompany you on curated site visits to handpicked, verified properties that match your specifications.' },
-                { step: '03', title: 'Legal & Pricing Negotiations', text: 'We assist with price negotiation, title verification, loan approvals, and drafting clear agreement contracts.' },
-                { step: '04', title: 'Smooth Handover', text: 'From registry completion to final key collection, we oversee every detail until you move in.' },
-              ].map(({ step, title, text }) => (
-                <div key={step} className="flex gap-4 p-5 bg-[#FAF9F5] rounded border border-gray-100">
-                  <div className="font-serif text-xl font-bold text-[#B8975A]">{step}</div>
-                  <div>
-                    <h4 className="font-semibold text-sm text-[#0D0D0D] mb-1">{title}</h4>
-                    <p className="text-xs text-[#6B6B6B] leading-relaxed">{text}</p>
-                  </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: '01', title: 'Need Analysis', text: 'We understand your exact spatial requirements, budget, and timeline.' },
+              { step: '02', title: 'Property Tours', text: 'We accompany you on curated site visits to verified properties.' },
+              { step: '03', title: 'Negotiations', text: 'We assist with price negotiation, title verification, and agreements.' },
+              { step: '04', title: 'Smooth Handover', text: 'From registry completion to final key collection until you move in.' },
+            ].map(({ step, title, text }) => (
+              <div key={step} className="p-5 bg-[#FAF9F5] rounded-xl border border-gray-100 flex flex-col justify-between hover:border-[#B8975A] transition-all">
+                <div>
+                  <div className="font-serif text-lg font-bold text-[#B8975A] mb-2">{step}</div>
+                  <h4 className="font-semibold text-xs md:text-sm text-[#0D0D0D] mb-1.5">{title}</h4>
+                  <p className="text-[11px] md:text-xs text-[#6B6B6B] leading-relaxed">{text}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
 
+          <div className="text-center mt-8">
+            <a
+              href="#contact"
+              className="inline-block bg-[#0D0D0D] hover:bg-[#B8975A] text-white py-2 px-6 rounded text-[11px] font-semibold tracking-wider uppercase transition-colors"
+            >
+              Schedule A Visit
+            </a>
           </div>
         </div>
       </section>
@@ -585,8 +586,6 @@ const AboutUsPage = () => {
           </div>
         </div>
       </section>
-
-
 
       {/* 6. Call to Action Banner */}
       <section className="bg-[#0D0D0D] py-16 px-6 text-center text-white">

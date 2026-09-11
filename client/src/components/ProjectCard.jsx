@@ -19,7 +19,9 @@ const FALLBACK_PROJECTS = [
       "24/7 Security & High-Speed Elevators",
       "Ample Multi-Level Parking",
       "100% Power Backup for Common Areas",
-      "Proximity to Main Highway"
+      "Proximity to Main Highway",
+      "Modern Clubhouse",
+      "Fully Equipped Gymnasium"
     ],
     images: ["/images/builder2.jpg", "/images/builder1.jpg"],
     brochure: "/images/builder1.jpg",
@@ -35,7 +37,9 @@ const FALLBACK_PROJECTS = [
       "Clubhouse & Swimming Pool",
       "Fully Equipped Gymnasium",
       "Children's Play Area & Jogging Track",
-      "Lush Green Central Park"
+      "Lush Green Central Park",
+      "Indoor Games Room",
+      "24/7 Centralized Security"
     ],
     images: ["/images/builder3.jpg", "/images/builder4.jpg"],
     brochure: "/images/builder3.jpg",
@@ -77,7 +81,6 @@ function MiniProjectLoader() {
           border: "1px solid rgba(255,255,255,0.3)",
         }}
       >
-        {/* animated circles */}
         <div className="d-flex justify-content-center gap-2 mb-3">
           {[0, 1, 2].map((i) => (
             <span
@@ -98,29 +101,17 @@ function MiniProjectLoader() {
           Loading Properties & Projects
         </h5>
 
-        <p
-          className="text-muted mb-3"
-          style={{ fontSize: "14px" }}
-        >
+        <p className="text-muted mb-3" style={{ fontSize: "14px" }}>
           First visit might take few seconds...
         </p>
 
-        {/* minimal progress */}
-        <div
-          style={{
-            height: "5px",
-            borderRadius: "999px",
-            background: "#ececec",
-            overflow: "hidden",
-          }}
-        >
+        <div style={{ height: "5px", borderRadius: "999px", background: "#ececec", overflow: "hidden" }}>
           <div
             style={{
               height: "100%",
               width: `${Math.min(seconds * 5, 90)}%`,
               borderRadius: "999px",
-              background:
-                "linear-gradient(90deg, #db6f0a, #dd7119)",
+              background: "linear-gradient(90deg, #db6f0a, #dd7119)",
               transition: "width 1s ease",
             }}
           />
@@ -177,15 +168,30 @@ export default function ProjectCard() {
   };
 
   return (
-    <section className="project-card-section container my-5">
-      <Swiper modules={[Navigation]} spaceBetween={30} slidesPerView={1} navigation={false}>
-        {projects.map((project) => (
-          <SwiperSlide key={project._id}>
-            <ProjectSlide project={project} onBrochureClick={handleBrochureClick} />
-          </SwiperSlide>
-        ))}
-        <CustomNavButtons />
-      </Swiper>
+    <section className="bg-[#F8F5F0] py-12 px-4 md:px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-[11px] font-semibold tracking-[4px] uppercase text-[#B8975A] text-center mb-2">
+          New Launches
+        </div>
+        <h2 className="font-serif text-3xl font-bold text-center text-[#0D0D0D] mb-8">
+          Featured Projects
+        </h2>
+
+        <Swiper 
+          modules={[Navigation]} 
+          spaceBetween={30} 
+          slidesPerView={1} 
+          navigation={false}
+          autoHeight={true}
+        >
+          {projects.map((project) => (
+            <SwiperSlide key={project._id} className="h-auto">
+              <ProjectSlide project={project} onBrochureClick={handleBrochureClick} />
+            </SwiperSlide>
+          ))}
+          <CustomNavButtons />
+        </Swiper>
+      </div>
 
       {showModal && (
         <EnquiryModal
@@ -215,104 +221,116 @@ function ProjectSlide({ project, onBrochureClick }) {
   };
 
   return (
-    <div className="project-card d-flex flex-column flex-lg-row align-items-center">
-      {/* Image Container with clean modern next/prev arrows and dot indicators */}
-      <div 
-        className="image-container position-relative w-100 flex-shrink-0 mb-4 mb-lg-0 overflow-hidden rounded shadow-sm" 
-        style={{ maxWidth: "520px", height: "380px" }}
-      >
-        <img
-          src={projectImages[currentIndex]}
-          alt={project.title}
-          className="w-100 h-100 object-fit-cover"
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = "/images/builder1.jpg";
-          }}
-        />
+    <div className="bg-white rounded-2xl shadow-sm border border-[#eae5d9] p-6 md:p-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        {/* Left Column: Image Container */}
+        <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="relative w-full h-[300px] md:h-[360px] bg-[#f9f8f6] rounded-xl overflow-hidden border border-[#eae5d9] flex items-center justify-center p-2">
+            <img
+              src={projectImages[currentIndex]}
+              alt={project.title}
+              className="w-full h-full object-contain transition-all duration-300"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/images/builder1.jpg";
+              }}
+            />
 
-        {projectImages.length > 1 && (
-          <>
-            {/* Left Button */}
-            <button 
-              onClick={prevImage}
-              className="position-absolute top-50 start-0 translate-middle-y ms-2 border-0 rounded-circle d-flex align-items-center justify-content-center shadow"
-              style={{ width: "38px", height: "38px", background: "rgba(255, 255, 255, 0.85)", color: "#212529", zIndex: 5, transition: "all 0.2s ease" }}
-              title="Previous Image"
-            >
-              <i className="bi bi-chevron-left"></i>
-            </button>
+            {projectImages.length > 1 && (
+              <>
+                <button 
+                  onClick={prevImage}
+                  className="absolute top-1/2 left-2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10"
+                  title="Previous Image"
+                >
+                  <i className="bi bi-chevron-left"></i>
+                </button>
 
-            {/* Right Button */}
-            <button 
-              onClick={nextImage}
-              className="position-absolute top-50 end-0 translate-middle-y me-2 border-0 rounded-circle d-flex align-items-center justify-content-center shadow"
-              style={{ width: "38px", height: "38px", background: "rgba(255, 255, 255, 0.85)", color: "#212529", zIndex: 5, transition: "all 0.2s ease" }}
-              title="Next Image"
-            >
-              <i className="bi bi-chevron-right"></i>
-            </button>
+                <button 
+                  onClick={nextImage}
+                  className="absolute top-1/2 right-2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/85 text-[#212529] shadow-md flex items-center justify-center hover:bg-white transition-all z-10"
+                  title="Next Image"
+                >
+                  <i className="bi bi-chevron-right"></i>
+                </button>
 
-            {/* Pagination Dots at Bottom */}
-            <div className="position-absolute bottom-0 start-50 translate-middle-x mb-3 d-flex gap-1 p-1 rounded-pill" style={{ background: "rgba(0,0,0,0.3)", backdropFilter: "blur(4px)", zIndex: 5 }}>
-              {projectImages.map((_, index) => (
-                <span
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  style={{
-                    width: index === currentIndex ? "20px" : "8px",
-                    height: "8px",
-                    borderRadius: "4px",
-                    backgroundColor: index === currentIndex ? "#fff" : "rgba(255,255,255,0.5)",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease"
-                  }}
-                ></span>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-
-      {/* Details Container */}
-      <div className="details-container py-2 ps-lg-5 flex-grow-1">
-        <h2 className="font-serif font-bold text-dark mb-1">{project.title}</h2>
-        <h3 className="text-muted fs-6 mb-3">{project.subtitle}</h3>
-        <p className="text-secondary mb-3">{project.description}</p>
-
-        {project.features && (
-          <ul className="mb-4">
-            {project.features.map((feature, idx) => (
-              <li key={idx} className="text-secondary">• {feature}</li>
-            ))}
-          </ul>
-        )}
-
-        <p className="fw-bold mb-1">Where business meets opportunity!</p>
-        <p className="text-muted small mb-4">Book your space now – Limited availability!</p>
-
-        <div className="d-flex gap-2 flex-wrap">
-          <button
-            className="standard-btn w-auto"
-            onClick={() => onBrochureClick(project.brochure, project.title)}
-          >
-            Download Brochure
-          </button>
-          <a
-            href={`https://wa.me/${project.whatsappNumber || ''}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="standard-btn w-auto text-decoration-none"
-          >
-            WhatsApp
-          </a>
-          <a
-            href={`mailto:${project.email || ''}`}
-            className="standard-btn w-auto text-decoration-none"
-          >
-            Email Us
-          </a>
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 p-1 rounded-pill bg-black/30 backdrop-blur-xs z-10">
+                  {projectImages.map((_, index) => (
+                    <span
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className="cursor-pointer transition-all duration-300 rounded-full"
+                      style={{
+                        width: index === currentIndex ? "20px" : "8px",
+                        height: "8px",
+                        backgroundColor: index === currentIndex ? "#fff" : "rgba(255,255,255,0.5)"
+                      }}
+                    ></span>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
         </div>
+
+        {/* Right Column: Project Details */}
+        <div className="lg:col-span-7 flex flex-col justify-center">
+          <h3 className="font-serif text-3xl md:text-4xl font-bold text-[#B8975A] mb-1">
+            {project.title}
+          </h3>
+          <p className="text-sm font-semibold uppercase tracking-widest text-gray-400 mb-3">
+            {project.subtitle}
+          </p>
+          <p className="text-gray-600 text-sm leading-relaxed mb-2">
+            {project.description}
+          </p>
+
+          {project.features && (
+            <div className="mb-5">
+              <h4 className="text-sm font-bold uppercase tracking-widest text-[#0D0D0D] mb-2.5 mt-2 border-b border-[#eae5d9] pb-2">
+                Key Features & Amenities
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1.5">
+                {project.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                    <span className="text-[#B8975A] font-bold">•</span>
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="pt-3 border-t border-[#eae5d9]">
+            <p className="text-sm font-semibold text-[#0D0D0D] mb-0.5">Where business meets opportunity!</p>
+            <p className="text-[11px] text-gray-400 mb-3">Book your space now – Limited availability!</p>
+
+            <div className="flex flex-wrap gap-2.5">
+              <button
+                className="px-4 py-2 rounded-full bg-[#B8975A] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#a3824b] transition-all shadow-xs cursor-pointer"
+                onClick={() => onBrochureClick(project.brochure, project.title)}
+              >
+                Download Brochure
+              </button>
+              <a
+                href={`https://wa.me/${project.whatsappNumber || ''}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full border border-[#B8975A] text-[#B8975A] text-xs font-bold uppercase tracking-widest hover:bg-[#B8975A] hover:text-white transition-all text-decoration-none"
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`mailto:${project.email || ''}`}
+                className="px-4 py-2 rounded-full border border-gray-300 text-gray-700 text-xs font-bold uppercase tracking-widest hover:border-gray-800 transition-all text-decoration-none"
+              >
+                Email Us
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
@@ -321,12 +339,18 @@ function ProjectSlide({ project, onBrochureClick }) {
 function CustomNavButtons() {
   const swiper = useSwiper();
   return (
-    <div className="custom-nav-buttons text-center mt-3">
-      <button className="btn btn-outline-dark mx-2" onClick={() => swiper.slidePrev()}>
-         Prev Project
+    <div className="flex justify-center items-center  gap-1 mt-3 px-2">
+      <button 
+        className="px-5 py-2 text-xs font-bold uppercase tracking-widest rounded-full border border-[#B8975A] text-[#B8975A] hover:bg-[#B8975A] hover:text-white transition-all bg-white cursor-pointer" 
+        onClick={() => swiper.slidePrev()}
+      >
+        ← Prev Project
       </button>
-      <button className="btn btn-outline-dark mx-2" onClick={() => swiper.slideNext()}>
-        Next Project 
+      <button 
+        className="px-5 py-2 text-xs font-bold uppercase tracking-widest rounded-full border border-[#B8975A] text-[#B8975A] hover:bg-[#B8975A] hover:text-white transition-all bg-white cursor-pointer" 
+        onClick={() => swiper.slideNext()}
+      >
+        Next Project →
       </button>
     </div>
   );

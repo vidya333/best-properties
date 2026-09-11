@@ -38,9 +38,15 @@ const Header = () => {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-[#B8975A] flex items-center justify-center">
-              <span className="text-white font-serif font-bold text-xl">B</span>
-            </div>
+            <img 
+              src="/images/best-properties/best-properties-logo.jpeg" 
+              alt="BEST Properties Logo" 
+              className="w-10 h-10 object-cover rounded shadow-sm border border-[#B8975A]/40"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = '/images/builder1.jpg'; // Fallback if image path misses
+              }}
+            />
             <div className="leading-tight">
               <span className="text-white font-semibold tracking-widest text-sm uppercase">
                 BEST <span className="text-[#B8975A]">Properties</span>
@@ -65,11 +71,30 @@ const Header = () => {
                 }`} />
               </Link>
             ))}
+
+            {/* Loans Link placed before Contact */}
+            <Link
+              to="/loans"
+              className={`text-[13px] font-medium tracking-wide transition-colors duration-200 relative group ${
+                location.pathname === '/loans' ? 'text-[#B8975A]' : 'text-white/80 hover:text-[#B8975A]'
+              }`}
+            >
+              Loans
+              <span className={`absolute -bottom-1 left-0 h-px bg-[#B8975A] transition-all duration-300 ${
+                location.pathname === '/loans' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`} />
+            </Link>
+
             <Link
               to="/contact"
-              className="text-[13px] font-medium tracking-wide text-white/80 hover:text-[#B8975A] transition-colors duration-200"
+              className={`text-[13px] font-medium tracking-wide transition-colors duration-200 relative group ${
+                location.pathname === '/contact' ? 'text-[#B8975A]' : 'text-white/80 hover:text-[#B8975A]'
+              }`}
             >
               Contact
+              <span className={`absolute -bottom-1 left-0 h-px bg-[#B8975A] transition-all duration-300 ${
+                location.pathname === '/contact' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`} />
             </Link>
             
             {/* Desktop Enquire Now Button */}
@@ -108,6 +133,16 @@ const Header = () => {
             {label}
           </Link>
         ))}
+
+        {/* Loans Link placed before Contact in Mobile Menu */}
+        <Link
+          to="/loans"
+          className="text-2xl text-white/80 hover:text-[#B8975A] font-medium tracking-wide transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          Loans
+        </Link>
+
         <Link
           to="/contact"
           className="text-2xl text-white/80 hover:text-[#B8975A] font-medium tracking-wide transition-colors"

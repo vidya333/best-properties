@@ -29,6 +29,7 @@ const App = () => {
         <Route path="/loan" element={<LoanServices />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path ="/contact" element={<ContactPage/>} />
+        <Route path='/loans' element={<LoanServices/>}/>
         <Route
           path="/add-property"
           element={
