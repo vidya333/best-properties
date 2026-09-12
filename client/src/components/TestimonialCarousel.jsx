@@ -55,7 +55,6 @@ export default function TestimonialCarousel() {
       try {
         const res = await api.get('/testimonials');
         if (res.data && res.data.length > 0) {
-          // Map backend schema fields to match what the carousel expects
           const mappedData = res.data.map(item => ({
             name: item.clientName || 'Client',
             location: item.company ? `${item.company}${item.role ? ` - ${item.role}` : ''}` : (item.role || 'Verified Client'),
@@ -65,6 +64,7 @@ export default function TestimonialCarousel() {
             image: item.image ? getImageUrl(item.image) : null,
           }));
           setTestimonials(mappedData);
+          setCurrent(0); // Reset index so it never goes out of bounds
         }
       } catch (err) {
         console.error("Failed to fetch backend testimonials, using fallback data:", err);
@@ -83,6 +83,7 @@ export default function TestimonialCarousel() {
   if (!testimonials || testimonials.length === 0) return null;
 
   const item = testimonials[current];
+  if (!item) return null; // Extra safety guard to prevent undefined crash
 
   return (
     <section className="bg-white py-16 px-6 relative overflow-hidden">
@@ -194,7 +195,7 @@ export default function TestimonialCarousel() {
             <div className="text-[11px] text-[#6B6B6B] uppercase tracking-wider mt-0.5">Nanded City Expertise</div>
           </div>
           <div>
-            <div className="text-xl sm:text-2xl font-bold font-serif text-[#B8975A]">4.9 ★</div>
+            <div className="text-xl sm:text-2xl font-bold font-serif text-[#B8975A]">5 ★</div>
             <div className="text-[11px] text-[#6B6B6B] uppercase tracking-wider mt-0.5">Average Client Rating</div>
           </div>
         </div>

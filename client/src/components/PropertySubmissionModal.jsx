@@ -24,7 +24,7 @@ const PropertySubmissionModal = ({ intentType, onClose }) => {
     setSubmitting(true);
 
     try {
-      const businessWhatsApp = "919920155441";
+      const businessWhatsApp = "919623935935";
       const priceLabel = intentType === 'Rent' ? 'Expected Rent' : 'Expected Price';
       
       // Formatting details matching your requested style

@@ -19,7 +19,7 @@ const EnquiryModal = ({ onClose, onSuccess, prefillMessage }) => {
     setSubmitting(true);
 
     try {
-      const businessWhatsApp = "919920155441";
+      const businessWhatsApp = "919623935935";
       
      // Formatting the details cleanly for WhatsApp
       const text = `Hii, my name is ${formData.name} (email: ${formData.email}). ${formData.message || prefillMessage || ''} You can contact me on this number: ${formData.phone}`;

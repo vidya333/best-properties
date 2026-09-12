@@ -32,7 +32,7 @@ const ContactPage = () => {
     } finally {
       // Directly fires WhatsApp with the structured message payload
       try {
-        const businessWhatsApp = "919920155441";
+        const businessWhatsApp = "919623935935";
         const text = `Hii, my name is ${formData.name} (email: ${formData.email || 'N/A'}). Subject: ${formData.subject || 'General Inquiry'}.\n\nMessage:\n${formData.message}\n\nYou can contact me on this number: ${formData.phone}`;
         const encodedMessage = encodeURIComponent(text);
         
