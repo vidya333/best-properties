@@ -224,7 +224,7 @@ const AllPropertiesPage = () => {
         </div>
 
         {/* Filter Bar */}
-        <div className="bg-[#F8F5F0] border border-gray-100 p-5 mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <div className="bg-[#F8F5F0] border border-gray-100 p-3 mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
           <input
             type="text"
             placeholder="Search by name or location..."
@@ -272,7 +272,7 @@ const AllPropertiesPage = () => {
               key={i}
               value={sel.value}
               onChange={sel.onChange}
-              className="border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-[#B8975A] transition-colors bg-white font-sans"
+              className="border text-gray-900 border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-[#B8975A] transition-colors bg-white font-sans"
             >
               {sel.options.map(([val, label]) => (
                 <option key={val} value={val}>{label}</option>
