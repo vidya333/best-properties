@@ -8,8 +8,16 @@ router.get('/', getAllProperties);
 router.get('/related', getRelatedByType);
 router.get('/:id', getPropertyById);
 
-router.post('/',verifyToken, upload.array('images', 10), createProperty);
-router.put('/:id',verifyToken, upload.array('images', 10), updateProperty);
+router.post('/', verifyToken, upload.fields([
+  { name: 'images', maxCount: 10 },
+  { name: 'videos', maxCount: 3 }
+]), createProperty);
+
+router.put('/:id', verifyToken, upload.fields([
+  { name: 'images', maxCount: 10 },
+  { name: 'videos', maxCount: 3 }
+]), updateProperty);
+
 router.delete('/:id',verifyToken, deleteProperty);
 
 module.exports = router;

@@ -8,9 +8,8 @@ import { API } from '../config';
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import PropertyCard from '../components/PropertyCard';
-import { FaWhatsapp, FaEnvelope, FaPhoneAlt, FaCalendarCheck, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaWhatsapp, FaEnvelope, FaPhoneAlt, FaCalendarCheck, FaMapMarkerAlt, FaPlay } from 'react-icons/fa';
 
-// Fallback Property Data (Only used if the ID completely fails to load)
 const FALLBACK_PROPERTY = {
   _id: "demo-prop-1",
   title: "Asawari Luxury 3 BHK Residence",
@@ -29,7 +28,8 @@ const FALLBACK_PROPERTY = {
   brokerEmail: "sales@bestproperties.com",
   images: [
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
-  ]
+  ],
+  videos: []
 };
 
 const FALLBACK_RELATED = [];
@@ -48,7 +48,7 @@ const PropertyDetailPage = () => {
   const [property, setProperty] = useState(null);
   const [related, setRelated] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [mainImage, setMainImage] = useState("");
+  const [mainMedia, setMainMedia] = useState("");
 
   const getFullUrl = (path) => {
     if (!path) return "";
@@ -56,10 +56,15 @@ const PropertyDetailPage = () => {
     return `${API}${path}`; 
   };
 
+  const isVideo = (url) => {
+    return url.match(/\.(mp4|webm|ogg|mov)$/i) || url.includes('/video/upload/');
+  };
+
   useEffect(() => {
     const applyFallback = () => {
       setProperty(FALLBACK_PROPERTY);
-      setMainImage(FALLBACK_PROPERTY.images[0]);
+      const initialMedia = FALLBACK_PROPERTY.videos?.[0] || FALLBACK_PROPERTY.images[0];
+      setMainMedia(initialMedia);
       setRelated(FALLBACK_RELATED);
     };
 
@@ -70,11 +75,14 @@ const PropertyDetailPage = () => {
         
         if (data && data._id) {
           setProperty(data);
-          const imagesArr = Array.isArray(data.images) && data.images.length 
-            ? data.images 
-            : (data.imageUrl ? [data.imageUrl] : []);
           
-          if (imagesArr.length) setMainImage(getFullUrl(imagesArr[0]));
+          const imagesArr = Array.isArray(data.images) && data.images.length ? data.images : (data.imageUrl ? [data.imageUrl] : []);
+          const videosArr = Array.isArray(data.videos) ? data.videos : [];
+          const combinedMedia = [...imagesArr, ...videosArr];
+          
+          if (combinedMedia.length) {
+            setMainMedia(getFullUrl(combinedMedia[0]));
+          }
 
           const relRes = await api.get(`/properties?type=${encodeURIComponent(data.type)}`);
           if (Array.isArray(relRes.data) && relRes.data.length) {
@@ -104,9 +112,9 @@ const PropertyDetailPage = () => {
     );
   }
 
-  const images = Array.isArray(property.images) && property.images.length 
-    ? property.images 
-    : (property.imageUrl ? [property.imageUrl] : []);
+  const imagesArr = Array.isArray(property.images) && property.images.length ? property.images : (property.imageUrl ? [property.imageUrl] : []);
+  const videosArr = Array.isArray(property.videos) ? property.videos : [];
+  const mediaList = [...imagesArr, ...videosArr];
 
   return (
     <div className="w-full bg-[#FAF9F6] min-h-screen p-0 m-0 overflow-x-hidden">
@@ -142,35 +150,54 @@ const PropertyDetailPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Gallery View (Left) */}
+          {/* Gallery & Video View (Left) */}
           <div className="lg:col-span-7 space-y-3">
             <div className="rounded-2xl overflow-hidden bg-gray-900 border border-gray-200/60 shadow-md h-[320px] sm:h-[440px]">
-              {images.length > 0 ? (
-                <img 
-                  src={mainImage || getFullUrl(images[0])} 
-                  alt={property.title} 
-                  className="w-full h-full object-cover transition-all duration-300"
-                />
+              {mediaList.length > 0 ? (
+                isVideo(mainMedia) ? (
+                  <video 
+                    src={mainMedia} 
+                    className="w-full h-full object-cover" 
+                    controls 
+                    autoPlay 
+                    muted 
+                    playsInline
+                  />
+                ) : (
+                  <img 
+                    src={mainMedia || getFullUrl(mediaList[0])} 
+                    alt={property.title} 
+                    className="w-full h-full object-cover transition-all duration-300"
+                  />
+                )
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-500 text-xs">No Image Available</div>
+                <div className="w-full h-full flex items-center justify-center text-gray-500 text-xs">No Media Available</div>
               )}
             </div>
             
-            {/* Thumbnails */}
-            {images.length > 1 && (
+            {/* Thumbnails (Images & Videos) */}
+            {mediaList.length > 1 && (
               <div className="flex gap-2.5 overflow-x-auto pb-1">
-                {images.map((src, i) => {
+                {mediaList.map((src, i) => {
                   const fullSrc = getFullUrl(src);
-                  const isActive = fullSrc === mainImage;
+                  const isActive = fullSrc === mainMedia;
+                  const itemIsVideo = isVideo(fullSrc);
+
                   return (
                     <button
                       key={i}
-                      onClick={() => setMainImage(fullSrc)}
-                      className={`relative rounded-xl overflow-hidden border-2 transition-all shrink-0 w-20 h-16 ${
+                      onClick={() => setMainMedia(fullSrc)}
+                      className={`relative rounded-xl overflow-hidden border-2 transition-all shrink-0 w-20 h-16 bg-gray-900 ${
                         isActive ? 'border-[#B8975A] scale-95 shadow-md' : 'border-transparent opacity-70 hover:opacity-100'
                       }`}
                     >
-                      <img src={fullSrc} alt={`Thumb ${i+1}`} className="w-full h-full object-cover" />
+                      {itemIsVideo ? (
+                        <div className="w-full h-full flex items-center justify-center bg-black/60 text-white">
+                          <FaPlay className="text-xs text-[#B8975A]" />
+                        </div>
+                      ) : (
+                        <img src={fullSrc} alt={`Thumb ${i+1}`} className="w-full h-full object-cover" />
+                      )}
                     </button>
                   );
                 })}

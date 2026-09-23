@@ -37,10 +37,15 @@ const getRelatedByType = async (req, res) => {
 const createProperty = async (req, res) => {
   try {
     let uploadedImages = [];
+    let uploadedVideos = [];
 
-    if (req.files && req.files.length > 0) {
-      // Use .path for direct Cloudinary URLs
-      uploadedImages = req.files.map(file => file.path);
+    if (req.files) {
+      if (req.files.images && req.files.images.length > 0) {
+        uploadedImages = req.files.images.map(file => file.path);
+      }
+      if (req.files.videos && req.files.videos.length > 0) {
+        uploadedVideos = req.files.videos.map(file => file.path);
+      }
     }
 
     const property = new Property({
@@ -50,7 +55,8 @@ const createProperty = async (req, res) => {
       deposit: req.body.deposit ? Number(req.body.deposit) : null,
       carpetArea: req.body.carpetArea ? Number(req.body.carpetArea) : null,
       images: uploadedImages,
-      imageUrl: uploadedImages[0] || ''
+      imageUrl: uploadedImages[0] || '',
+      videos: uploadedVideos // <-- Save videos
     });
 
     await property.save();
@@ -58,6 +64,47 @@ const createProperty = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Error creating property', error: err.message });
+  }
+};
+
+// UPDATE Property (Cloudinary Updated)
+const updateProperty = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const oldProperty = await Property.findById(id);
+    if (!oldProperty) return res.status(404).json({ message: 'Property not found' });
+
+    let uploadedImages = oldProperty.images;
+    let uploadedVideos = oldProperty.videos || [];
+
+    if (req.files) {
+      if (req.files.images && req.files.images.length > 0) {
+        uploadedImages = req.files.images.map(file => file.path);
+      }
+      if (req.files.videos && req.files.videos.length > 0) {
+        uploadedVideos = req.files.videos.map(file => file.path);
+      }
+    }
+
+    const updated = await Property.findByIdAndUpdate(
+      id,
+      {
+        ...req.body,
+        price: req.body.price ? Number(req.body.price) : null,
+        rent: req.body.rent ? Number(req.body.rent) : null,
+        deposit: req.body.deposit ? Number(req.body.deposit) : null,
+        carpetArea: req.body.carpetArea ? Number(req.body.carpetArea) : null,
+        images: uploadedImages,
+        imageUrl: uploadedImages[0] || oldProperty.imageUrl,
+        videos: uploadedVideos // <-- Update videos
+      },
+      { new: true }
+    );
+
+    res.json({ message: 'Property updated successfully', property: updated });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error updating property', error: err.message });
   }
 };
 
@@ -74,41 +121,6 @@ const deleteProperty = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
-  }
-};
-
-// UPDATE Property (Cloudinary Updated)
-const updateProperty = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const oldProperty = await Property.findById(id);
-    if (!oldProperty) return res.status(404).json({ message: 'Property not found' });
-
-    let uploadedImages = oldProperty.images;
-
-    if (req.files && req.files.length > 0) {
-      // Replace old images with new Cloudinary URLs if new files are uploaded
-      uploadedImages = req.files.map(file => file.path);
-    }
-
-    const updated = await Property.findByIdAndUpdate(
-      id,
-      {
-        ...req.body,
-        price: req.body.price ? Number(req.body.price) : null,
-        rent: req.body.rent ? Number(req.body.rent) : null,
-        deposit: req.body.deposit ? Number(req.body.deposit) : null,
-        carpetArea: req.body.carpetArea ? Number(req.body.carpetArea) : null,
-        images: uploadedImages,
-        imageUrl: uploadedImages[0] || oldProperty.imageUrl
-      },
-      { new: true }
-    );
-
-    res.json({ message: 'Property updated successfully', property: updated });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Error updating property', error: err.message });
   }
 };
 

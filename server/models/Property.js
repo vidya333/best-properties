@@ -8,6 +8,7 @@ const propertySchema = new mongoose.Schema({
   description: String,
   images: [String], 
   imageUrl: String,
+  videos: [String],
   brokerName: String,
   brokerEmail: String,
   brokerPhone: String,

@@ -17,7 +17,7 @@ const AddProperty = () => {
   const [formData, setFormData] = useState({
     title: '', location: '', price: '', rent: '', description: '',
     brokerName: '', brokerEmail: '', brokerPhone: '', type: '',
-    imageFiles: [], 
+    imageFiles: [], videoFiles: [],
     flatType: '', availableFor: '', deposit: '',
     carpetArea: '', parking: '', furnished: '', facing: '', locationPin: ''
   });
@@ -59,12 +59,17 @@ const AddProperty = () => {
           if (formData[key] !== '' && formData[key] !== null && formData[key] !== undefined) {
             fd.append(key, formData[key]);
           }
-        }
-      });
+         }
+       });
 
       if (formData.imageFiles && formData.imageFiles.length > 0) {
         formData.imageFiles.forEach(file => {
           fd.append("images", file); 
+        });
+      }
+      if (formData.videoFiles && formData.videoFiles.length > 0) {
+        formData.videoFiles.forEach(file => {
+          fd.append("videos", file); 
         });
       }
 
@@ -97,7 +102,7 @@ const AddProperty = () => {
     setFormData({
       title: '', location: '', price: '', rent: '', description: '',
       brokerName: '', brokerEmail: '', brokerPhone: '', type: '',
-      imageFiles: [], flatType: '', availableFor: '', deposit: '',
+      imageFiles: [],videoFiles: [], flatType: '', availableFor: '', deposit: '',
       carpetArea: '', parking: '', furnished: '', facing: '', locationPin: ''
     });
   };
@@ -298,6 +303,11 @@ const AddProperty = () => {
                       <div className="col-md-6">
                         <label className="form-label text-xs fw-bold text-secondary">Property Images</label>
                         <input type="file" name="images" accept="image/*" multiple onChange={(e) => setFormData({ ...formData, imageFiles: Array.from(e.target.files) })} className="form-control" />
+                      </div>
+
+                      <div className="col-md-6">
+                        <label className="form-label text-xs fw-bold text-secondary">Property Videos</label>
+                        <input type="file" name="videos" accept="video/*" multiple onChange={(e) => setFormData({ ...formData, videoFiles: Array.from(e.target.files) })} className="form-control" />
                       </div>
 
                       <div className="col-md-6">
