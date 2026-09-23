@@ -478,7 +478,7 @@ const Home = () => {
 
           {/* Pagination */}
           {!loading && filteredProperties.length > propertiesPerPage && !showAll && (
-            <div className="flex justify-center items-center gap-3 mt-10">
+            <div className="flex justify-center items-center gap-3 mt-10 text-gray-900">
               <button
                 className="border border-gray-200 hover:border-[#B8975A] text-sm px-4 py-2 disabled:opacity-30 transition-colors cursor-pointer"
                 disabled={currentPage === 1}
