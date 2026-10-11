@@ -157,7 +157,7 @@ const AboutUsPage = () => {
                 <span className="text-xs font-semibold text-[#0D0D0D] uppercase tracking-wider mr-1">Connect:</span>
                 
                 <a
-                  href="https://www.instagram.com/nanded_city_best_properties"
+                  href="https://www.instagram.com/best_properties_madhukar_m"
                   target="_blank"
                   rel="noreferrer"
                   className="w-9 h-9 rounded-full bg-white border border-gray-200 text-[#0D0D0D] hover:bg-[#B8975A] hover:text-white hover:border-[#B8975A] flex items-center justify-center transition-colors shadow-sm"

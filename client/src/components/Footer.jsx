@@ -30,7 +30,7 @@ const Footer = () => {
             <div className="flex flex-wrap gap-3">
               {[
                 { icon: 'bi-facebook', href: 'https://www.facebook.com/share/1LZ8iBYHtQ/?mibextid=wwXIfr' },
-                { icon: 'bi-instagram', href: 'https://www.instagram.com/nanded_city_best_properties' },
+                { icon: 'bi-instagram', href: 'https://www.instagram.com/best_properties_madhukar_m' },
                 { icon: 'bi-google', href: 'https://maps.app.goo.gl/vFvbeVZCmtCFwNVLA?g_st=ic' },
                 { icon: 'bi-whatsapp', href: 'https://wa.me/919623935935' },
               ].map(({ icon, href }) => (
